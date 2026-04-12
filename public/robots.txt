@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://help.campaignly.net
+
+# Sitemaps
+Sitemap: https://help.campaignly.net/sitemap.xml
