@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "5-local-marketing-mistakes",
+    "title": "5 Local Marketing Mistakes Every Agency Makes (And How to Fix Them)",
+    "category": "guides",
+    "seoKeyword": "local marketing mistakes agencies",
+    "description": "These five local marketing mistakes cost agencies clients and revenue every year. Here's how to spot them — and fix them — before they become a problem.",
+    "published": true
+  },
+  {
+    "slug": "how-to-use-audit-tool",
+    "title": "How to Use Campaignly's Audit Tool to Find Campaign Gaps",
+    "category": "guides",
+    "seoKeyword": "campaign audit tool",
+    "description": "A walkthrough of Campaignly's audit tool — what it checks, how to interpret results, and how to prioritize fixes for your clients.",
+    "published": false
+  },
+  {
+    "slug": "set-realistic-marketing-goals",
+    "title": "How to Set Realistic Marketing Goals for Local Business Clients",
+    "category": "guides",
+    "seoKeyword": "marketing goals local business",
+    "description": "Setting the wrong goals is the fastest way to lose a client. Here's how to define targets that are honest, measurable, and achievable.",
+    "published": false
+  },
+  {
+    "slug": "agency-guide-google-ads-reporting",
+    "title": "The Agency's Guide to Google Ads Reporting",
+    "category": "guides",
+    "seoKeyword": "Google Ads reporting for agencies",
+    "description": "What to include in Google Ads reports, how to frame performance for non-technical clients, and which metrics actually matter.",
+    "published": false
+  },
+  {
+    "slug": "ga4-google-ads-numbers-dont-match",
+    "title": "Why Your GA4 Numbers Don't Match Google Ads (And What to Do About It)",
+    "category": "tips",
+    "seoKeyword": "GA4 Google Ads discrepancy",
+    "description": "Attribution models, conversion windows, and session counting all contribute to the mismatch. Here's how to explain it to clients and fix it.",
+    "published": false
+  },
+  {
+    "slug": "presenting-marketing-results",
+    "title": "How to Present Marketing Results to Non-Technical Clients",
+    "category": "guides",
+    "seoKeyword": "presenting marketing results to clients",
+    "description": "Translating ad metrics into language that resonates with business owners — what to show, what to skip, and how to frame performance.",
+    "published": false
+  },
+  {
+    "slug": "local-seo-checklist-new-campaigns",
+    "title": "Local SEO Checklist for New Campaigns",
+    "category": "tips",
+    "seoKeyword": "local SEO checklist new campaign",
+    "description": "The 12 local SEO items to check before launching any campaign for a local business client. Audit this list once, save hours of troubleshooting later.",
+    "published": false
+  },
+  {
+    "slug": "impressions-clicks-conversions",
+    "title": "Understanding the Difference Between Impressions, Clicks, and Conversions",
+    "category": "guides",
+    "seoKeyword": "impressions clicks conversions explained",
+    "description": "A plain-English guide to the three most-cited ad metrics — what they measure, how they relate, and what a healthy ratio looks like.",
+    "published": false
+  },
+  {
+    "slug": "winning-marketing-proposal",
+    "title": "How to Build a Marketing Proposal That Wins Local Business Clients",
+    "category": "guides",
+    "seoKeyword": "marketing proposal local business clients",
+    "description": "The structure, language, and specifics that turn a generic proposal into one that gets signed. Includes what most agencies leave out.",
+    "published": false
+  },
+  {
+    "slug": "google-business-profile-agencies",
+    "title": "The Complete Guide to Google Business Profile for Agencies",
+    "category": "guides",
+    "seoKeyword": "Google Business Profile guide agencies",
+    "description": "Everything agencies need to know about managing Google Business Profiles for clients — setup, optimization, posts, reviews, and reporting.",
+    "published": false
+  }
+]
