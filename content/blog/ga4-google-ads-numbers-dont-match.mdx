@@ -12,6 +12,69 @@ featured: false
 schema: article
 ---
 
-# Why Your GA4 Numbers Don't Match Google Ads
+You pull up GA4 to review a client's campaign performance and the conversion numbers look nothing like what Google Ads is reporting. It happens constantly, and it's one of the first things clients ask about when they start paying attention to their dashboards. Before you spend an hour digging through settings or second-guessing your setup, here's what's actually causing the discrepancy — and what you can do about it.
 
-> This article is coming soon. Check back shortly for the full guide.
+## The Two Platforms Measure Conversions Differently
+
+This is the root of almost every mismatch. Google Ads and GA4 use fundamentally different attribution models and counting methods.
+
+Google Ads counts conversions based on ad interactions. By default, it uses a **last click** or **data-driven** attribution model tied to ad clicks and view-throughs. It also counts conversions *per click session* — meaning if someone clicks your ad and converts three times in a 30-day window, Google Ads might count all three.
+
+GA4, on the other hand, counts conversions as **key events** (what used to be called goals), and it attributes them using a session-scoped or user-scoped model depending on how you're looking at the data. By default, GA4 uses last non-direct click attribution in most standard reports.
+
+So even with a perfect setup, you're comparing two different lenses on the same user journey.
+
+## Auto-Tagging Is Off (Or Being Stripped)
+
+If auto-tagging isn't enabled in Google Ads, GA4 has no way to properly attribute sessions back to your ads. Traffic shows up as organic or direct instead of paid search, and your conversion data gets split across channels incorrectly.
+
+Check this first: Go to **Google Ads → Settings → Account Settings → Auto-tagging** and confirm it's turned on. Then verify that your destination URLs aren't stripping the `gclid` parameter — some CMS platforms and redirect setups do this automatically. If `gclid` is getting dropped, GA4 never receives the handoff.
+
+A quick way to test: click one of your own ads, land on the site, and check the URL bar. The `gclid` parameter should still be visible in the address.
+
+## Conversion Actions Are Set Up in Both Places — But Differently
+
+A common scenario: you've set up a conversion action directly in Google Ads (like a tag-based form submission), and you've *also* created a key event in GA4 for the same action. They might be tracking slightly different things.
+
+Maybe the Google Ads tag fires on button click, but the GA4 event fires on thank-you page load. Or the Google Ads conversion window is 90 days and GA4 is reporting on a 30-day view. Small differences in trigger conditions and windows add up fast.
+
+The cleanest solution is to **import GA4 key events into Google Ads** as conversion actions rather than running parallel tracking setups. That way, both platforms are working from the same source of truth. To do this: Google Ads → Tools → Conversions → New conversion action → Import → Google Analytics 4.
+
+This doesn't eliminate all discrepancies, but it dramatically reduces them.
+
+## Lookback Windows and Attribution Windows Don't Align
+
+Google Ads has a conversion window — up to 90 days for most actions — that means a click today can get credit for a conversion months from now. GA4 reports are typically filtered to whatever date range you've selected, and it doesn't retroactively adjust conversions the same way.
+
+If you're running a 30-day report in GA4 and comparing it to Google Ads data for the same period, Google Ads might be including conversions from clicks that happened before your report window even started. That's not a bug — it's just how the platforms are built.
+
+When you need a clean comparison, use Google Ads reports filtered by **conversion date** rather than click date. This aligns the reporting logic more closely with how GA4 counts events.
+
+## Modeled Conversions and Consent Mode
+
+If you've implemented Google Consent Mode (which you should be, especially for EU traffic), GA4 and Google Ads handle unobserved conversions differently.
+
+Google Ads uses modeled conversions to fill in the gaps when cookies are declined — it estimates conversions based on similar observed behavior. GA4, depending on your configuration, may or may not include modeled data in its reports. This means Google Ads could be reporting higher conversion numbers simply because it's counting modeled conversions that GA4 isn't surfacing.
+
+Check whether modeled conversions are enabled in your Google Ads account and understand how your GA4 property handles consent-gated data. In GA4's **Admin → Data Collection → Consent Mode settings**, you can see what's being modeled versus observed.
+
+## Cross-Device and Cross-Session Behavior
+
+GA4 uses a session model. If a user clicks your ad, leaves, comes back directly two days later, and converts — GA4 might credit that conversion to direct traffic. Google Ads still credits the original ad click because the `gclid` is associated with the user within its conversion window.
+
+This plays out constantly with longer sales cycles, which is common for local service businesses where someone might research, call for a quote, and then book later. Both platforms are technically correct — they're just answering different questions.
+
+## How to Reconcile the Numbers in Practice
+
+You're probably not going to get these two platforms to match perfectly, and that's okay. What you want is a working framework:
+
+- **Use GA4 for behavior and trend analysis** — sessions, engagement, user journeys
+- **Use Google Ads for campaign-level performance** — cost per conversion, ROAS, bidding decisions
+- **Import GA4 key events into Google Ads** to reduce the double-tracking problem
+- **Build a reconciliation note** for client reports that briefly explains the difference and what each number represents
+
+When clients ask why the numbers don't match, this context turns a confusing moment into a trust-building one. You're not hiding a problem — you're explaining how the tools work.
+
+---
+
+If you're building client reports that pull from both GA4 and Google Ads, keeping track of these discrepancies manually gets old fast. [Campaignly](https://campaignly.com) is built for exactly this — helping agencies create clean, client-ready reports that make multi-source data actually make sense. Worth checking out if you're spending more time explaining dashboards than improving campaigns.
