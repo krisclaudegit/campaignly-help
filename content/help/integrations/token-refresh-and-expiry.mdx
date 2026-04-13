@@ -12,6 +12,45 @@ featured: false
 schema: article
 ---
 
-# Understanding Token Refresh and Expiry
+## What are tokens and why do they expire?
 
-> This article is coming soon. Check back shortly for the full guide.
+When you connect an external platform to Campaignly — like Google Ads, Facebook, or your email service provider — we don't store your password. Instead, we use **authentication tokens**. These are like temporary access passes that let Campaignly act on your behalf.
+
+Tokens expire for security reasons. If a token leaks, it only works for a limited time. After expiry, someone can't use it to access your account indefinitely. It's the same reason you re-authenticate apps on your phone or sign back into websites.
+
+## How Campaignly refreshes tokens automatically
+
+Here's the good news: **Campaignly automatically refreshes your tokens in the background**. You don't need to do anything.
+
+When a token gets close to expiry, our system requests a fresh one from the connected platform. If the refresh succeeds, your connection stays active without interruption. This happens whether you're actively using Campaignly or not.
+
+## What happens if a refresh fails
+
+Occasionally, a refresh might fail. This could happen if:
+
+- The connected account was deleted or suspended
+- Permissions were revoked on the platform side
+- The account password was changed
+- Two-factor authentication settings changed
+- The platform revoked access for security reasons
+
+When this happens, Campaignly marks the connection as **expired**. You'll see a warning on the dashboard and in your integrations settings. The connection stops working — campaigns won't run, data won't sync, and scheduled actions pause.
+
+## How to fix an expired connection
+
+1. Go to **Settings** > **Integrations**
+2. Find the expired connection (it'll show a red warning icon)
+3. Click **Reconnect** or **Re-authenticate**
+4. Follow the platform's login flow (you may need to re-grant permissions)
+5. Once complete, token refresh restarts automatically
+
+The entire process usually takes less than a minute.
+
+## Important notes
+
+- **You're never locked out permanently.** Even if a token expires, reconnecting always gets you back online.
+- **Check your integrations monthly.** If a connection shows as expired and you're not using it, you can safely ignore it. But if you're actively running campaigns, reconnect right away.
+- **Permissions matter.** When you reconnect, make sure you grant all the same permissions as before. If you skip a permission, features may not work.
+- **Campaignly never stores your passwords.** We only store tokens, which are far more secure and limited in scope.
+
+If a connection keeps failing to refresh even after reconnecting, contact support — something unusual may be happening on the platform's side.

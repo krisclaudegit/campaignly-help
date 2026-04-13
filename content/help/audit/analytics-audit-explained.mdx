@@ -12,6 +12,73 @@ featured: false
 schema: article
 ---
 
-# Analytics Audit Explained
+## What the Analytics Audit does
 
-> This article is coming soon. Check back shortly for the full guide.
+The **Analytics Audit** checks your Google Analytics 4 (GA4) setup for common configuration issues, goal tracking problems, and data quality gaps. It scans your GA4 property and flags settings that might prevent you from capturing accurate campaign performance data.
+
+Think of it as a health check for your analytics. It identifies problems before bad data gets baked into your reporting.
+
+## What gets checked
+
+### GA4 configuration
+
+- Property and stream setup validity
+- Event tracking implementation
+- User ID settings
+- Data retention policies
+- Conversion tracking enablement
+
+### Goal and conversion tracking
+
+- Goals properly mapped to GA4 events
+- Conversion events are firing
+- Goal value settings (if applicable)
+- E-commerce tracking configuration
+
+### Data accuracy
+
+- Missing or duplicate tracking codes
+- Filtering issues (internal traffic, spam)
+- Event naming inconsistencies
+- Data import problems
+- Cross-domain tracking setup
+
+## How to run an audit
+
+1. Open the **Audit** section in Campaignly.
+2. Select **Analytics Audit** from the audit type menu.
+3. Choose the GA4 property you want to check from the dropdown.
+4. Click **Run Audit**.
+
+Campaignly connects to your GA4 account and scans the configuration. This takes 2–5 minutes depending on your account complexity.
+
+## Reading audit results
+
+Results appear as a list of findings organized by severity:
+
+- **Critical**: Breaks tracking or prevents goal conversion logging. Fix these first.
+- **Warning**: Causes data gaps or inaccuracy. Address these before analyzing campaign results.
+- **Info**: Suggests optimization or best practice improvements. Lower priority.
+
+Each finding includes:
+
+- **What's wrong** — the specific issue
+- **Why it matters** — how it affects your data
+- **How to fix it** — actionable steps (usually with a link to GA4 settings)
+
+## Important notes
+
+**Permission requirements**: You must have Editor access to the GA4 property in Google Analytics. Campaignly can't audit properties you can only view.
+
+**Timing**: Run an audit after major setup changes (adding new goals, installing tracking code, setting up conversions). Re-audit monthly to catch drift.
+
+**GA4 vs. Universal Analytics**: This audit only works with GA4 properties. If you're still using Universal Analytics, migrate to GA4 first.
+
+**Events take time to appear**: New events need 24–48 hours to show in GA4. If an audit flags "event not firing," wait a day before troubleshooting.
+
+## Next steps after an audit
+
+1. Fix critical issues first—they're blocking accurate data collection.
+2. Document which goals map to which campaigns in Campaignly.
+3. Set up **alerts** in GA4 for anomalies in future campaign tracking.
+4. Schedule quarterly audits to stay on top of configuration drift.

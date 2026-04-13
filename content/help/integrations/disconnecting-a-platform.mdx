@@ -12,6 +12,42 @@ featured: false
 schema: article
 ---
 
-# Disconnecting a Platform
+## What disconnecting a platform means
 
-> This article is coming soon. Check back shortly for the full guide.
+When you **disconnect a platform**, you remove its connection from Campaignly. This stops Campaignly from accessing that platform's account and data. Any campaigns or drafts you've created in Campaignly remain in your account—disconnecting just severs the integration link.
+
+Common reasons to disconnect:
+- You've stopped using that platform
+- You want to connect a different account for the same platform
+- You're cleaning up unused integrations
+- Your platform credentials have changed
+
+## How to disconnect a platform
+
+1. Click **Settings** in the main menu
+2. Select **Integrations**
+3. Find the platform you want to disconnect in the list
+4. Click the **three-dot menu** (or **Disconnect** button) next to it
+5. Click **Disconnect**
+6. Confirm when prompted
+
+The platform is now disconnected from your Campaignly account.
+
+## What happens after disconnecting
+
+- **Publishing stops working** — If you have active campaigns scheduled to publish to that platform, they won't go out. You'll see an error if you try to publish manually
+- **Data access ends** — Campaignly can no longer pull analytics or account information from that platform
+- **Your drafts stay** — Campaign drafts and templates remain in Campaignly. You can still edit them, but you won't be able to publish anywhere until you reconnect the platform or connect a different one
+- **No data is deleted** — Your posts and content on the actual platform aren't affected at all
+
+## Reconnecting a platform
+
+You can reconnect the same platform anytime by going back to **Settings > Integrations** and clicking **Connect** next to the platform name. You'll need to re-authorize it with your credentials.
+
+If you want to connect a *different* account for the same platform, disconnect the current one first, then connect the new account.
+
+## Gotchas to watch for
+
+- **Scheduled campaigns won't publish** — If you have posts scheduled to go out while a platform is disconnected, they'll fail. Reconnect or reassign them to a different platform before the publish time
+- **You can't see which campaigns use a platform** — Before disconnecting, double-check that you don't have active campaigns relying on it
+- **Multi-account setups** — If you have the same platform connected multiple times (different accounts), disconnecting removes only that specific connection

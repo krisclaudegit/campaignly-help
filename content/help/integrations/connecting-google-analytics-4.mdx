@@ -12,6 +12,81 @@ featured: false
 schema: article
 ---
 
-# Connecting Google Analytics 4
+## Overview
 
-> This article is coming soon. Check back shortly for the full guide.
+**Google Analytics 4 (GA4)** integration lets you pull analytics data directly into Campaignly for audits, reporting, and campaign performance analysis. Once connected, you'll see key metrics without leaving the platform.
+
+## What you can do
+
+- View traffic, conversions, and user behavior data in Campaignly reports
+- Run **analytics audits** to identify tracking issues or gaps
+- Compare campaign performance across channels
+- Export analytics data alongside your marketing metrics
+
+## Requirements
+
+Before connecting GA4, you'll need:
+
+- Access to the GA4 property you want to connect
+- **Editor** or **Administrator** role in that GA4 account (read-only access won't work)
+- A Campaignly account with appropriate permissions
+
+## Connect GA4 to Campaignly
+
+### Step 1: Start the connection
+
+1. In Campaignly, go to **Integrations** → **Analytics**.
+2. Find **Google Analytics 4** and click **Connect**.
+3. You'll be directed to Google's login page.
+
+### Step 2: Authenticate with Google
+
+1. Sign in with the Google account that has access to your GA4 property.
+2. Review the permissions Campaignly is requesting (data read access only).
+3. Click **Allow** to authorize the connection.
+
+### Step 3: Select your GA4 property
+
+1. You'll see a list of available GA4 properties.
+2. Select the property you want to connect.
+3. Click **Confirm**.
+
+### Step 4: Verify the connection
+
+You'll be returned to Campaignly. A green checkmark indicates the connection is active. You can now pull GA4 data into reports and audits.
+
+## Using GA4 data in Campaignly
+
+Once connected, you can:
+
+- **Build reports** that include GA4 metrics (sessions, users, conversions, etc.)
+- **Run analytics audits** to check tracking implementation
+- **Add GA4 dimensions** to segment your campaign data
+
+Data syncs automatically, though some reports may take a few minutes to populate.
+
+## Disconnect or switch properties
+
+Need to reconnect to a different GA4 property?
+
+1. Go to **Integrations** → **Analytics**.
+2. Find Google Analytics 4 and click **Manage**.
+3. Select **Disconnect** or **Switch Property**.
+4. Follow the authentication steps again.
+
+## Troubleshooting
+
+**Connection fails after clicking Allow**  
+Check that your Google account has Editor or Admin access to the GA4 property. Read-only roles aren't supported.
+
+**Data isn't appearing in reports**  
+- Verify GA4 is actively tracking your site (check real-time data in GA4 itself).
+- Allow 24–48 hours for historical data to sync fully.
+- Re-authenticate if the connection is older than 6 months.
+
+**"Property not found" error**  
+Make sure you're selecting a GA4 property, not a Universal Analytics property. Campaignly only supports GA4.
+
+## Need help?
+
+If you run into issues, contact support with your Campaignly account email and the GA4 property ID (starts with "G-"). We'll investigate the connection from our end.

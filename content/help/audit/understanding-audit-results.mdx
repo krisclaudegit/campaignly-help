@@ -12,6 +12,65 @@ featured: false
 schema: article
 ---
 
-# Understanding Your Audit Results
+## What audit results measure
 
-> This article is coming soon. Check back shortly for the full guide.
+Your **audit** scans your campaign for common issues that could hurt performance or deliverability. It checks things like:
+
+- Email list quality and engagement
+- Campaign design and content problems
+- Compliance and authentication settings
+- Sending practices and reputation risks
+
+Each issue gets flagged with a status: **Pass**, **Warning**, or **Fail**. These tell you how urgent the problem is.
+
+## Understanding the statuses
+
+### Pass
+Your campaign meets best practices for this check. No action needed. Keep doing what you're doing.
+
+### Warning
+Something could be better, but it won't stop your campaign from sending. These are opportunities to improve performance or reduce risk. Review them before sending — they often point to quick wins.
+
+Examples:
+- List has low engagement over the past 6 months
+- Subject line is unusually short
+- Missing authentication records (SPF, DKIM, DMARC)
+
+### Fail
+This is a blocker. Either Campaignly won't let you send, or sending will likely damage your reputation and results.
+
+Examples:
+- Unverified sender email address
+- List contains invalid or known bad addresses
+- Campaign violates CAN-SPAM requirements (missing unsubscribe link)
+- Obvious spam triggers in subject or body copy
+
+You must fix Fails before sending.
+
+## How to review and act on results
+
+1. **Open your campaign** and scroll to the Audit section.
+2. **Sort by status** (Fails first, then Warnings, then Passes) to prioritize fixes.
+3. **Click each result** to see the specific issue and recommended fix.
+4. **Make changes** in your campaign — update content, verify your email, clean your list, etc.
+5. **Re-run the audit** by clicking the refresh button. Campaignly rescans automatically after major edits.
+6. **Send only when Fails are cleared.** Warnings are optional to fix, but addressing them improves deliverability.
+
+## Common gotchas
+
+**Audit results change when you edit.** If you remove subscribers or update your subject line, some warnings may clear automatically on the next scan.
+
+**Authentication (SPF/DKIM/DMARC) issues are Warnings, not Fails.** However, they significantly impact inbox placement. Set these up in your domain settings before sending important campaigns. See [Setting Up SPF and DKIM](/) for steps.
+
+**List warnings don't block sending.** A "low engagement" flag means some addresses haven't opened your emails in months. You can still send to them, but consider removing cold contacts first to protect your sender reputation.
+
+**Warnings disappear if you ignore them.** They don't. Fix them or accept the risk. If you send anyway, track bounce and complaint rates closely.
+
+## What to do if you're stuck
+
+The audit description explains *what* failed and *why*. If you need specific help:
+
+- **Content issues** — check the Fail/Warning message for the exact phrase flagged
+- **List problems** — export your list and run it through a validation tool outside Campaignly
+- **Authentication issues** — contact your email service provider or domain registrar for SPF/DKIM records
+- **Still unclear?** Reach out to support with a screenshot of the audit result

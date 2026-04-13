@@ -12,6 +12,75 @@ featured: false
 schema: article
 ---
 
-# Connecting Google
+## Overview
 
-> This article is coming soon. Check back shortly for the full guide.
+Connecting your Google account to Campaignly lets you pull data from **Google Analytics 4 (GA4)**, **Google Ads**, and **Google Search Console** directly into your campaigns and reports. Once connected, you can view performance metrics without leaving Campaignly.
+
+## What you need
+
+- A Google account with access to the properties you want to track
+- Admin or Editor permissions on the Google Analytics 4 property, Google Ads account, or Search Console domain
+- Your Campaignly account should have Admin permissions
+
+## How to connect
+
+1. Go to **Settings** → **Integrations**
+2. Find **Google** and click **Connect**
+3. You'll be redirected to Google's login page
+4. Sign in with the Google account that has access to your properties
+5. Review the permissions Campaignly is requesting and click **Allow**
+6. You'll return to Campaignly. Your account is now connected.
+
+## Selecting which properties to sync
+
+After connecting, you'll choose which Google properties to add to Campaignly:
+
+1. Go to **Settings** → **Integrations** → **Google**
+2. Under each service (GA4, Google Ads, Search Console), click **Add Property**
+3. Select the property you want to sync
+4. Click **Confirm**
+
+You can add multiple properties. Campaignly will start pulling data within a few minutes.
+
+## Using your connected data
+
+Once properties are synced:
+
+- **GA4 data** appears in campaign reports and performance dashboards
+- **Google Ads data** shows spend, clicks, and conversions in your campaign overview
+- **Search Console data** displays impressions and click-through rates for organic search
+
+Use these metrics to compare performance across channels in one place.
+
+## Disconnecting or removing properties
+
+To stop syncing a specific property:
+
+1. Go to **Settings** → **Integrations** → **Google**
+2. Find the property under its service
+3. Click the **Remove** icon
+4. Confirm the action
+
+To disconnect your entire Google account:
+
+1. Go to **Settings** → **Integrations**
+2. Click **Disconnect** next to Google
+3. Confirm
+
+This stops all Google data from syncing into Campaignly.
+
+## Common issues
+
+**"Permission denied" when connecting:**
+Make sure you're signing in with a Google account that has admin access to the properties you want to sync. Personal Gmail accounts often don't have these permissions.
+
+**Data isn't showing up:**
+- Check that the property was properly added in the **Integrations** settings
+- Allow up to 24 hours for historical data to backfill
+- Confirm the property is receiving data in Google's native platforms (GA4, Google Ads, or Search Console)
+
+**I see data from properties I didn't select:**
+Campaignly only syncs properties you explicitly add. If you see unexpected data, check your **Integrations** settings to see what's connected.
+
+**Need to reconnect with a different Google account:**
+Disconnect your current account, then follow the connection steps above with a different Google account.
