@@ -12,6 +12,114 @@ featured: false
 schema: article
 ---
 
-# Setting Up Goals in GA4
+Setting up conversion tracking in GA4 looks different from what you were used to in Universal Analytics — and if you're still searching for "goals" in the interface, you won't find them. The **GA4 goals setup** process has been replaced by conversion events, and once you understand the logic, it's actually more flexible. This guide walks you through creating those conversion events, marking the right triggers, and making sure your client's campaigns are measuring what actually matters.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## Why GA4 Replaced Goals with Conversion Events
+
+In Universal Analytics, goals were a separate configuration layer. You'd define a destination URL, a session duration, or a funnel — and UA would count those as goal completions.
+
+GA4 works differently. Everything in GA4 is an event. Page views, clicks, form submissions, phone calls — they're all events. Conversion tracking is simply a matter of flagging specific events as conversions.
+
+This matters for agencies because it means:
+
+- You can track more granular interactions without destination URL workarounds
+- Conversion logic is tied to events, which can be triggered by GTM, GA4 natively, or your site code
+- You're working toward a model that's consistent with how Google Ads and Meta Ads already track conversions
+
+The mental shift: stop thinking "what's the goal URL?" and start thinking "what event fires when the valuable action happens?"
+
+---
+
+## The Two Ways to Create Conversion Events in GA4
+
+There are two main paths depending on whether the event already exists in your data.
+
+### 1. Mark an Existing Event as a Conversion
+
+If GA4 is already collecting an event — say, `form_submit` or `purchase` — you can flip it to a conversion in seconds.
+
+1. Go to **Admin → Events** (under your property)
+2. Find the event in the list
+3. Toggle **Mark as conversion** to on
+
+That's it. GA4 will now count every instance of that event as a conversion. It will appear in your **Conversions** report and in Google Ads if the accounts are linked.
+
+The catch: GA4 only shows events it has already seen. If you've just set up a new property or a new event hasn't fired yet, it won't appear in the list. Use the next method instead.
+
+### 2. Create a New Conversion Event from Scratch
+
+Go to **Admin → Events → Create event**.
+
+This lets you define a new event based on conditions — for example, a page_view event where `page_location` contains `/thank-you`. Fill in:
+
+| Field | What to Enter |
+|---|---|
+| Custom event name | Your new event name (e.g., `lead_form_complete`) |
+| Matching conditions | Parameter, operator, and value |
+
+Once created, go back to the Events list, find your new event, and toggle it as a conversion.
+
+**One thing to know:** New conversion events can take 24–48 hours to appear in reports after setup. Don't assume something is broken just because you don't see data immediately.
+
+---
+
+## Setting Up Key Conversion Events for Local Businesses
+
+For most local business clients, you'll want to cover these core conversion types:
+
+**Lead form submissions**
+Use a thank-you page trigger: `page_view` where `page_location` contains `/contact-thank-you`. If there's no confirmation page, use GTM to fire a custom event on form submit.
+
+**Phone call clicks**
+GA4 doesn't track these automatically. Set up a GTM trigger on `click` where the click URL contains `tel:`. Name the event `phone_call_click` and mark it as a conversion.
+
+**Booking completions**
+If your client uses a third-party booking tool (Calendly, OpenTable, etc.), you may need GTM to capture the confirmation step, or use enhanced measurement if the tool supports GA4 natively.
+
+**Direction requests / map clicks**
+If the website has a Google Maps embed or a "Get Directions" button, create a click event in GTM for that element and mark it as a conversion.
+
+Here's a quick reference for common local business conversions:
+
+| Conversion Type | Event Method | Requires GTM? |
+|---|---|---|
+| Thank-you page visit | `page_view` + condition | No |
+| Form submit (no thank-you page) | Custom event on form submit | Yes |
+| Phone number click | Click trigger on `tel:` link | Yes |
+| Booking confirmation | Depends on platform | Usually |
+| Chat widget interaction | Custom event | Yes |
+
+---
+
+## Connecting GA4 Conversions to Google Ads
+
+If you're running Google Ads for the same client, link the GA4 property to the Ads account and import the conversion events. This keeps conversion data consistent across platforms — you're not comparing apples and oranges between GA4 reports and Ads reports.
+
+To link: **GA4 Admin → Google Ads Links → Add link**
+
+Once linked, go to Google Ads → **Tools → Conversions → Import from GA4**. Select the events you want to use for bidding and reporting.
+
+A few things worth noting:
+
+- Use GA4 conversions for **reporting** but consider keeping a native Google Ads conversion action for **Smart Bidding**, since it can have shorter attribution windows
+- Duplicate conversion counting is a real issue — audit which conversion actions are set to "primary" in Google Ads so you're not inflating numbers
+
+---
+
+## Auditing and Validating Your Conversion Setup
+
+Before you hand off a report to a client, verify the setup is actually working.
+
+**Use DebugView** (Admin → DebugView) to watch events fire in real time while you test conversions on the site. Trigger the form submission yourself, then watch DebugView to confirm the event and parameters are coming through correctly.
+
+**Check the Conversions report** after 24–48 hours and confirm conversion counts look realistic relative to traffic.
+
+**Cross-reference with Google Tag Manager** if events are firing through GTM — preview mode shows you exactly which tags fired and why.
+
+One common mistake: creating a conversion event with a typo in the event name. If your GTM tag fires `form_submitt` but your GA4 conversion is looking for `form_submit`, you'll get zero conversions and a confused client. Always copy-paste event names between tools.
+
+---
+
+Managing conversion tracking across multiple local business clients means keeping track of dozens of events, account links, and audit dates. Campaignly's client reporting tools let you pull GA4 conversion data alongside your Google Ads and Meta performance in one place — so you can show clients exactly what's working without rebuilding reports from scratch every month. [See how Campaignly handles multi-client analytics reporting →]

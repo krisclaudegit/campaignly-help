@@ -12,6 +12,105 @@ featured: false
 schema: article
 ---
 
-# GA4 for Local Businesses
+Most agencies managing local business accounts are still pulling data from a patchwork of tools — GA4 half-configured, Search Console disconnected, conversion tracking guesswork. Getting **GA4 local business analytics** right from the start saves hours of rework and gives clients the kind of reporting that actually justifies your retainer.
 
-> This article is coming soon. Check back shortly for the full guide.
+Here's how to set it up properly and pull the reports that matter for local businesses.
+
+---
+
+## Setting Up GA4 for a Local Business Website
+
+A clean setup takes less than an hour. The defaults Google gives you aren't enough for local — you need to customize for the signals that drive walk-ins, calls, and bookings.
+
+**1. Create a GA4 property and install the tag**
+
+Use Google Tag Manager. Create a new GA4 Configuration tag, paste in the Measurement ID, and fire it on all pages. Confirm data is flowing in the Realtime report before moving on.
+
+**2. Link Google Search Console and Google Business Profile**
+
+In GA4, go to Admin → Property Settings → Product Links. Connect Search Console first — this unlocks the organic search queries report inside GA4. GBP doesn't have a direct native link, but you can pull referral traffic from `maps.google.com` in your traffic source reports to see GBP-driven visits.
+
+**3. Set your business timezone and currency**
+
+Default settings often inherit from the Google account. Check Admin → Property → Property Details. A restaurant in Phoenix reporting in Pacific time is a real problem when you're measuring dinner rush traffic.
+
+**4. Enable enhanced measurement selectively**
+
+GA4's enhanced measurement auto-tracks scrolls, outbound clicks, video plays, and file downloads. For most local business sites, scroll depth creates noise without insight. Turn off scroll tracking and keep outbound clicks — those clicks to directories, booking platforms, or maps matter.
+
+---
+
+## The Events That Actually Matter for Local Businesses
+
+Local business conversions don't always happen on-site. Someone finds the site, grabs the phone number, and calls directly. If you're only tracking form fills, you're missing the majority of conversions.
+
+Set up these events as your baseline:
+
+| Event | What It Captures | Setup Method |
+|---|---|---|
+| `phone_call_click` | Taps/clicks on `tel:` links | GTM — click URL contains `tel:` |
+| `direction_request` | Clicks to Google Maps links | GTM — click URL contains `maps.google` |
+| `form_submit` | Contact/booking form completions | GTM or GA4 enhanced measurement |
+| `booking_click` | Clicks to third-party booking tools | GTM — click URL contains booking domain |
+| `hours_view` | Clicks to expand hours accordion | GTM — element visibility or click trigger |
+
+Mark `phone_call_click`, `direction_request`, and `form_submit` as conversions in GA4 (Admin → Events → Mark as Conversion). These become the metrics your monthly reports should lead with.
+
+**Custom dimensions worth adding:** If the client has multiple locations, add a `location_id` custom dimension so you can filter reports by branch. Set this via a GTM variable that reads the page URL or a data layer push from the CMS.
+
+---
+
+## Reports to Review Every Month
+
+GA4's default reporting interface is genuinely worse than Universal Analytics for quick answers. You'll spend less time frustrated if you build a few custom explorations.
+
+**Traffic acquisition by channel**
+
+Go to Reports → Acquisition → Traffic Acquisition. Filter the date range to the last 30 days and compare to the previous period. For local businesses, watch for three channels:
+
+- **Organic Search** — the clearest signal of SEO performance
+- **Organic Social** — often undervalued; GBP posts and Facebook drive real local traffic
+- **Direct** — high direct traffic usually means strong brand recognition or repeat visitors
+
+If referral traffic from `maps.google.com` is growing, your GBP optimization is working.
+
+**Landing page performance**
+
+Reports → Engagement → Landing Page. Sort by Sessions descending. The homepage, contact page, and any service area pages should be your top performers. If a service page is getting traffic but showing zero conversions, there's a UX or offer problem — not just an SEO problem.
+
+**Conversion paths (formerly attribution)**
+
+In GA4, go to Advertising → Attribution → Conversion Paths. This shows the touchpoints before a conversion — critical when a client asks "is SEO actually working?" and all conversions are attributed to Direct. You'll often see organic search initiating the journey even when direct gets the last click credit.
+
+---
+
+## Common GA4 Mistakes on Local Business Accounts
+
+A few patterns show up constantly when auditing agency-managed local accounts.
+
+**Tracking internal traffic.** If the client (or your team) visits the site regularly, those sessions inflate engagement metrics and distort bounce rates. Create an IP filter in Admin → Data Streams → Configure Tag Settings → Define Internal Traffic. Then activate the filter under Admin → Data Filters.
+
+**Not connecting to Google Ads.** If the client runs any local search campaigns, link GA4 to Google Ads under Property Links. This enables imported conversions in Ads and lets you see campaign performance against actual on-site behavior — not just clicks.
+
+**Ignoring the 30-minute session timeout default.** For a dental office where someone reads five pages over 45 minutes, the default session timeout splits that into two sessions. Consider extending to 60 minutes under Admin → Data Streams → Configure Tag Settings → Session Timeout.
+
+**Relying on automatic events for phone calls.** Enhanced measurement does NOT track phone number clicks as calls by default — it only fires if the link uses a `tel:` href attribute AND outbound click tracking is on. Always verify with a GTM preview before assuming calls are being recorded.
+
+---
+
+## Building a Client Dashboard That Makes Sense
+
+GA4 data is most useful when clients don't have to log into GA4 to see it. Most local business clients want a one-page summary: how many people found them, how many took an action, and is it improving.
+
+Pull these four metrics into whatever reporting tool you use:
+
+1. **Total users** (not sessions — less confusing for clients)
+2. **Phone call clicks + direction requests + form submits** (combined as "Local Conversions")
+3. **Organic search traffic** as a standalone line
+4. **Top 5 landing pages by session**
+
+Keep the historical trend visible — month-over-month and year-over-year. Seasonality hits local businesses hard, and a February dip at a landscaping company isn't a crisis.
+
+---
+
+If you're managing GA4 alongside Google Ads, GBP, and SEO reporting for multiple local clients, Campaignly's [automated reporting feature](#) pulls this data into a single client-ready dashboard — so you're spending time on strategy instead of copy-pasting numbers from four different tabs.

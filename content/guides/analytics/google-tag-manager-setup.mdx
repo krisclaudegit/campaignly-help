@@ -12,6 +12,109 @@ featured: false
 schema: article
 ---
 
-# Google Tag Manager Setup Guide
+If you've been manually editing website code every time a client needs a new tracking pixel, this **Google Tag Manager setup guide** will save you hours each month. GTM gives you a single container that holds all your tags — GA4, Google Ads conversion tracking, Meta Pixel — and lets you deploy or update them without touching the site's source code.
 
-> This article is coming soon. Check back shortly for the full guide.
+Here's how to set it up properly and start firing tags in under an hour.
+
+---
+
+## Creating Your GTM Account and Container
+
+Go to [tagmanager.google.com](https://tagmanager.google.com) and sign in with a Google account. If you're managing multiple clients, create one GTM account per client — not one account for everything. This keeps permissions clean and avoids cross-contamination of data.
+
+**Steps:**
+
+1. Click **Create Account**
+2. Enter the account name (use the client's business name)
+3. Under Container Setup, enter the website URL
+4. Set Target Platform to **Web**
+5. Click Create and accept the terms
+
+GTM will immediately show you two code snippets — one for the `<head>` and one for the `<body>`. These need to go on every page of the site. If the client uses WordPress, the **Insert Headers and Footers** plugin handles this in minutes without a developer. For Shopify, paste the snippets directly into the theme's `theme.liquid` file.
+
+Once installed, use [Google Tag Assistant](https://tagassistant.google.com) (the browser extension) to confirm the container is firing correctly before adding any tags.
+
+---
+
+## Installing GA4 Through GTM
+
+Rather than installing the GA4 snippet directly on the site, route it through GTM. This gives you control over what data gets sent and makes future changes easier.
+
+**What you need:** Your GA4 Measurement ID (format: `G-XXXXXXXXXX`). Find it in GA4 under Admin → Data Streams → your web stream.
+
+**In GTM:**
+
+1. Go to **Tags → New**
+2. Click Tag Configuration → choose **Google Tag**
+3. Enter your Measurement ID
+4. Under Triggering, select **All Pages**
+5. Name it something clear: `GA4 - Configuration`
+6. Save and publish
+
+This fires the base GA4 tag on every page. For event tracking (form submissions, button clicks, scroll depth), you'll add separate event tags later — but the configuration tag needs to go out first.
+
+---
+
+## Adding Google Ads Conversion Tracking
+
+Google Ads conversion tracking tells you which clicks actually turned into leads or sales. Without it, you're bidding blind.
+
+**What you need:** The Conversion ID and Conversion Label from your Google Ads account. Find them under Tools → Conversions → select a conversion action → Tag Setup → Use Google Tag Manager.
+
+| Field | Where to Find It |
+|---|---|
+| Conversion ID | Google Ads → Conversions → Tag details |
+| Conversion Label | Google Ads → Conversions → Tag details |
+| Trigger | The specific page or event (e.g., thank-you page) |
+
+**In GTM:**
+
+1. Tags → New → Tag Configuration → **Google Ads Conversion Tracking**
+2. Enter the Conversion ID and Label
+3. For the trigger, create a new **Page View** trigger that fires only on your thank-you or confirmation URL (use "Page URL contains /thank-you" as the condition)
+4. Save and publish
+
+If the conversion is tied to a button click rather than a page load (common for single-page sites), create a **Click - All Elements** trigger and filter by the button's CSS class or ID.
+
+---
+
+## Installing Meta Pixel Without Code
+
+Meta Pixel used to require manual code edits on every site. Through GTM, it takes about five minutes.
+
+**What you need:** Your Meta Pixel ID. Find it in Meta Events Manager → your pixel → Settings.
+
+**In GTM:**
+
+1. Tags → New → Tag Configuration → **Custom HTML**
+2. Paste the Meta Pixel base code (get the exact snippet from Meta Events Manager)
+3. Set the trigger to **All Pages**
+4. Name it `Meta Pixel - Base Code`
+5. Save
+
+For standard events like `PageView`, `Lead`, or `Purchase`, create separate Custom HTML tags with the event code, triggered on the relevant pages or actions.
+
+**One important note:** If the client's site has a cookie consent banner, set these tags to fire only after consent is given. GTM's built-in Consent Mode integration handles this — but it requires extra configuration. Don't skip this step for EU-based clients or any site targeting European audiences.
+
+---
+
+## Testing Before You Publish
+
+Publishing untested tags creates bad data that's harder to fix than no data at all. Use GTM's **Preview Mode** before every publish.
+
+Click **Preview** in the top-right corner of GTM. This opens Tag Assistant in a new tab and lets you browse the site while watching exactly which tags fire on each page and why.
+
+**Check for:**
+
+- GA4 config tag firing on all pages
+- Google Ads conversion tag firing *only* on the confirmation page
+- Meta Pixel base code firing on all pages
+- No duplicate tag fires (a common issue when mixing direct-install code with GTM tags)
+
+If a tag fires incorrectly, go back and adjust the trigger conditions before publishing. Once you're satisfied, hit **Submit** in GTM, add a version description (e.g., "Added GA4, Google Ads, Meta Pixel"), and publish.
+
+Going forward, every change you make to tracking — new pixels, updated conversion actions, added events — gets done in GTM. No more waiting on developers, no more risking a broken site deployment.
+
+---
+
+Keeping track of which tags are live, which clients have GTM configured, and which campaigns are actually capturing conversions gets messy fast across a full client roster. [Campaignly's reporting dashboard](https://campaignly.com) pulls your GA4, Google Ads, and Meta data into a single view so you can see what's working across every account without jumping between platforms.

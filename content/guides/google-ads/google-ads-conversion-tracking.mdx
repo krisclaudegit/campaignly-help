@@ -12,6 +12,128 @@ featured: false
 schema: article
 ---
 
-# Setting Up Conversion Tracking in Google Ads
+Conversion data is the difference between guessing and knowing. If you're running campaigns without a proper **Google Ads conversion tracking setup**, you're optimizing blind — spending budget without understanding what's actually driving results for your clients. This guide walks through the exact steps to track the three conversions that matter most for local businesses: phone calls, form submissions, and purchases.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## Why Conversion Tracking Breaks (and How to Avoid It)
+
+Before touching any settings, understand the two most common failure points:
+
+1. **The tag fires on the wrong page.** A thank-you page conversion tag placed on the form page itself will trigger on every visit, not just completions.
+2. **Auto-tagging is disabled.** Without auto-tagging, Google Ads can't connect click data to conversions. Check this under Settings → Account Settings → Auto-tagging before you do anything else.
+
+Fix both issues upfront and you'll avoid 80% of the tracking headaches that plague agency accounts.
+
+---
+
+## Setting Up Google Tag Manager First
+
+Most of the setups below assume you're using Google Tag Manager (GTM). If you're not, you should be. Deploying conversion tags through GTM means you don't need developer access every time a client changes something.
+
+**Minimum GTM setup:**
+- Container installed on every page (including thank-you pages)
+- Google Ads Conversion Linker tag firing on All Pages
+- Preview mode used to verify before publishing
+
+If a client's site doesn't have GTM, get it installed first. Everything else depends on it.
+
+---
+
+## Tracking the Three Core Conversions
+
+### 1. Form Submissions
+
+Form tracking is the most common setup for local service businesses — plumbers, dentists, law firms, anyone using a contact form as a lead mechanism.
+
+**Step-by-step:**
+
+1. In Google Ads, go to **Goals → Conversions → New conversion action**
+2. Select **Website**
+3. Enter the client's domain and click **Scan**
+4. Choose **Page load** as the tracking method
+5. Enter the thank-you page URL (e.g., `/thank-you` or `/contact/success`)
+6. Set the category to **Submit lead form**, value to zero (or assign a dollar value if you know average lead worth), and count to **One**
+
+The "One" count setting matters. If you count every conversion, a single user refreshing the thank-you page inflates your numbers.
+
+After creating the conversion action, Google generates a tag snippet. Deploy it in GTM as a Google Ads Conversion Tracking tag, triggered only on the thank-you page URL.
+
+---
+
+### 2. Phone Call Tracking
+
+There are two phone call scenarios, and they need different setups.
+
+**Calls from ads (call extensions / call assets):**
+Go to Goals → Conversions → New conversion action → Phone calls → Calls from ads using call extensions. Set a minimum call duration (60–90 seconds filters out wrong numbers). This requires no tag — it's tracked automatically once you have call assets on the campaign.
+
+**Calls from the website:**
+This uses Google's forwarding number, which dynamically swaps the number on the client's site for visitors who arrived via a Google Ads click.
+
+1. New conversion action → Phone calls → Calls to a phone number on your website
+2. Set minimum call duration (again, 60–90 seconds)
+3. Deploy the provided tag in GTM as a Google Ads tag on All Pages — **not** just the homepage
+
+The forwarding number only appears for users whose session includes a Google Ads click. Test by clicking a live ad and checking whether the number swaps on the site.
+
+| Call Type | Tag Required | Where to Place |
+|---|---|---|
+| Calls from call assets | No | N/A |
+| Calls from website | Yes | All pages |
+| Calls from mobile click-to-call | No | N/A |
+
+---
+
+### 3. Purchase / E-commerce Tracking
+
+For clients with online stores, you need dynamic conversion values — not a flat "1 purchase = $50" estimate.
+
+**In Google Ads:**
+1. New conversion action → Website → Purchase
+2. Set value to **Use different values for each conversion**
+3. Count: **One** (or **Every** if repeat purchases in the same session are realistic)
+
+**In GTM:**
+You'll need a Data Layer push from the order confirmation page that passes transaction value, currency, and order ID. Most e-commerce platforms (Shopify, WooCommerce) have native Data Layer support or plugins.
+
+The GTM tag setup for purchase tracking:
+
+- **Tag type:** Google Ads Conversion Tracking
+- **Conversion value:** Pull from Data Layer variable (e.g., `{{dlv - purchase.value}}`)
+- **Order ID:** Pull from Data Layer (prevents duplicate counting on page refresh)
+- **Trigger:** Custom event — `purchase` (or whatever the platform fires)
+
+Without the order ID, a customer refreshing their confirmation page creates duplicate conversions. Always pass it.
+
+---
+
+## Verifying Your Setup Before Going Live
+
+Never trust a setup you haven't tested.
+
+**Use these tools:**
+- **GTM Preview mode** — walk through the conversion path and confirm the right tags fire on the right triggers
+- **Google Tag Assistant (browser extension)** — shows which tags are firing on any given page
+- **Conversion Action status in Google Ads** — changes from "Unverified" to "Recording" within 24 hours of a real conversion firing
+
+Also check the **Diagnostics tab** in your Conversion Actions list. Google now surfaces issues like tag not detected, no recent conversions, or attribution gaps — check it after any new setup.
+
+One more thing: set your **conversion window** appropriately. For local services, a 30-day window is usually right. For high-consideration purchases (home renovation, legal services), extend to 60 or 90 days to capture delayed decisions.
+
+---
+
+## Importing Offline Conversions
+
+If a client closes deals over the phone or in person after a web lead, standard tracking misses the real outcome. Offline conversion imports let you close that loop.
+
+Basic process:
+1. Capture the **GCLID** (Google Click ID) when the lead submits a form — store it in your CRM
+2. When the lead closes, export a CSV with GCLID, conversion name, value, and timestamp
+3. Upload under Goals → Conversions → Uploads
+
+Some CRMs (HubSpot, Salesforce) have direct integrations that automate this. For smaller clients, a manual monthly upload is still far better than no offline data at all.
+
+---
+
+Once your conversion tracking is solid, you can actually trust what your campaigns are telling you — and make smarter budget decisions for every client. If you're managing multiple client accounts, keeping conversion data organized and reportable is its own challenge. [Campaignly's client reporting tools](https://campaignly.com) pull conversion data from Google Ads into clean, client-ready dashboards, so you're not rebuilding the same report from scratch every month.

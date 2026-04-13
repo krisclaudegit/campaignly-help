@@ -12,6 +12,112 @@ featured: false
 schema: article
 ---
 
-# Technical SEO Checklist
+Running a solid technical SEO checklist is how you protect every other investment your client makes in content and links. If Googlebot can't crawl a page, or the server takes four seconds to respond, rankings suffer regardless of how good the copy is. This guide walks through the core areas — crawlability, indexing, page speed, HTTPS, canonical tags, and structured data — with actionable checks you can run right now.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## Crawlability and Site Architecture
+
+Before anything else, make sure Google can actually get through the site.
+
+**Check robots.txt first.** Visit `domain.com/robots.txt` and confirm it isn't accidentally blocking important directories. A common culprit: WordPress sites where the staging environment had `Disallow: /` and the rule carried over to production.
+
+**Review crawl budget on large sites.** For sites with 500+ pages, open Google Search Console > Settings > Crawl stats. If Googlebot is spending time on paginated archive pages, filters, or session IDs, you're wasting crawl budget that should go to product or service pages.
+
+**Fix broken internal links.** Run a crawl with Screaming Frog or Sitebug. Any internal 404 or redirect chain longer than one hop wastes crawl resources and dilutes link equity.
+
+| Issue | Where to Find It | Fix |
+|---|---|---|
+| robots.txt blocking key pages | `domain.com/robots.txt` | Update disallow rules |
+| Crawl budget waste | GSC Crawl stats | Noindex thin/filter pages |
+| Broken internal links | Screaming Frog crawl | Update or remove links |
+| Redirect chains | Screaming Frog > Response Codes | 301 directly to final URL |
+
+---
+
+## Indexing and Sitemap Health
+
+Crawlability and indexing are different problems. A page can be crawled and still not indexed.
+
+**Submit a clean XML sitemap.** Your sitemap should only include canonical, indexable URLs. No noindex pages, no redirect URLs, no parameter variants. Submit it through Google Search Console and check for errors under the Index > Sitemaps report.
+
+**Use the URL Inspection tool for spot checks.** If a key service page isn't appearing in search, inspect it in GSC. Look at "Page is not indexed" reasons — the most common are: duplicate without user-selected canonical, crawled but not indexed, and discovered but not yet indexed.
+
+**Check for noindex tags in the wrong places.** This happens more than you'd think after a site migration. Use Screaming Frog (Directives column) to scan for pages with `noindex` that should be live.
+
+**Verify canonical tags are self-referencing correctly.** Every indexable page should have a canonical tag pointing to itself, or to the version you want indexed if there are near-duplicate variants (e.g., HTTP vs HTTPS, trailing slash vs none).
+
+---
+
+## Page Speed and Core Web Vitals
+
+Page speed directly affects both rankings and conversion rates. A one-second delay in mobile load time can drop conversions by up to 20%.
+
+Run the client's site through [PageSpeed Insights](https://pagespeed.web.dev/) and record the Core Web Vitals:
+
+- **LCP (Largest Contentful Paint):** Should be under 2.5 seconds. Usually caused by unoptimized hero images or render-blocking scripts.
+- **INP (Interaction to Next Paint):** Should be under 200ms. Heavy JavaScript is the typical culprit.
+- **CLS (Cumulative Layout Shift):** Should be under 0.1. Often caused by images without defined dimensions or late-loading ads.
+
+**Practical fixes to prioritize:**
+
+1. Compress and serve images in WebP format
+2. Implement lazy loading for images below the fold
+3. Eliminate render-blocking resources (defer non-critical JS, inline critical CSS)
+4. Use a CDN for static assets
+5. Enable browser caching with appropriate cache-control headers
+
+For local business clients on shared hosting, a simple move to a performance-optimized host or a caching plugin like WP Rocket often gets LCP under 2.5 seconds without touching code.
+
+---
+
+## HTTPS, Security, and Technical Signals
+
+**HTTPS is a baseline ranking signal.** If any client site is still on HTTP, fix it immediately. Check that:
+
+- SSL certificate is valid and not expired
+- All pages redirect from HTTP to HTTPS (not just the homepage)
+- No mixed content warnings exist (HTTP resources loaded on HTTPS pages)
+
+Use Chrome DevTools > Security tab to check for mixed content. Tools like [Why No Padlock](https://www.whynopadlock.com/) can surface insecure elements quickly.
+
+**Check hreflang for multilingual sites.** If your client serves multiple regions or languages, incorrect hreflang implementation causes pages to rank in the wrong market. Each page needs a self-referencing hreflang tag plus tags for all alternates.
+
+---
+
+## Canonical Tags and Structured Data
+
+**Canonical tags prevent duplicate content from diluting rankings.** Common scenarios where you need them:
+
+- E-commerce product pages accessible via multiple category paths
+- Blog posts with `/page/2/` pagination variants
+- Pages with UTM parameters generating separate URLs
+
+Audit canonicals with a crawl export. Filter for pages where the canonical URL differs from the crawled URL and verify each case is intentional.
+
+**Structured data gives search engines explicit context** about your client's business, which matters especially for local SEO. At minimum, implement:
+
+| Schema Type | Best For | Key Properties |
+|---|---|---|
+| `LocalBusiness` | All local clients | Name, address, phone, hours, geo coordinates |
+| `FAQPage` | Service/landing pages | Question, accepted answer |
+| `BreadcrumbList` | Multi-level sites | Item, position, name |
+| `Review` / `AggregateRating` | Service businesses | Rating value, review count |
+
+Use Google's [Rich Results Test](https://search.google.com/test/rich-results) to validate markup before publishing. Errors in structured data don't cause penalties, but they do prevent rich result eligibility.
+
+**One practical workflow:** When onboarding a new local client, run a LocalBusiness schema audit before touching anything else. Missing or incorrect NAP data in schema often conflicts with what's in Google Business Profile, which creates trust signals Google has to reconcile.
+
+---
+
+## Running This Checklist Efficiently
+
+For agencies managing multiple clients, the key is systematizing these checks rather than doing them ad hoc. Build a recurring audit schedule:
+
+- **Monthly:** GSC index coverage, crawl errors, Core Web Vitals field data
+- **Quarterly:** Full site crawl, structured data review, canonical audit
+- **On-site changes:** Re-run URL inspection, check for new noindex/redirect issues
+
+Document findings in a shared format your clients can understand. Screenshot the before state — when speed improves or indexing issues clear up, you need evidence to show value.
+
+If you're producing monthly SEO reports for clients alongside this technical work, Campaignly's reporting tools let you pull GSC, GA4, and ranking data into branded reports automatically — so you spend less time in spreadsheets and more time fixing the actual issues this checklist surfaces.

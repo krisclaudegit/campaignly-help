@@ -12,6 +12,89 @@ featured: false
 schema: article
 ---
 
-# GA4 vs Universal Analytics: Key Differences
+If you're still mentally working in Universal Analytics, you're not alone. The shift to GA4 caught a lot of agencies off guard, and the two platforms are different enough that old instincts don't always translate. Understanding **GA4 vs Universal Analytics** isn't just an academic exercise — it directly affects how you report to clients, set up campaigns, and measure what's actually working.
 
-> This article is coming soon. Check back shortly for the full guide.
+Here's what changed, why it matters, and how to work with GA4 more effectively.
+
+---
+
+## The Core Model Has Changed: Sessions vs. Events
+
+This is the biggest structural shift. Universal Analytics (UA) was built around **sessions and pageviews**. Every interaction was filtered through a session, and metrics like bounce rate and pages per session made intuitive sense in that context.
+
+GA4 is built around an **event-based model**. Everything is an event — a pageview, a scroll, a click, a form submission. There are no sessions in the same structural sense. GA4 still calculates sessions, but they're derived from events, not the other way around.
+
+What this means in practice:
+
+- Bounce rate is gone (replaced by **engagement rate**)
+- Pageviews still exist, but they're just one event type among many
+- You can track far more granular user behavior without custom code — scrolls, video plays, and file downloads are tracked automatically
+
+For client reporting, this is a conversation you need to have. A client used to seeing bounce rate of 45% will now see an engagement rate of 60% — and those aren't just inverses of each other. They measure different things.
+
+---
+
+## How GA4 Handles Users and Identity
+
+UA used a **Client ID** (a cookie-based identifier) as its primary way to track users. It worked reasonably well in a desktop-first world, but it struggled with cross-device behavior and was increasingly disrupted by cookie restrictions.
+
+GA4 introduces a more flexible identity model with three options:
+
+| Identity Method | What It Uses |
+|---|---|
+| User ID | Logged-in user identifiers from your site |
+| Google Signals | Aggregated, consented data from signed-in Google users |
+| Device ID | Cookie or app instance ID (similar to UA's approach) |
+
+GA4 uses these together to give a more complete picture of the user journey across devices. For local business clients who run both web and app experiences, this is genuinely useful. For most small local businesses, the practical difference is smaller — but you should still understand which identity method is active in your property.
+
+One caveat: Google Signals thresholds can cause data to be withheld in reports when audiences are small, which can frustrate clients with lower traffic. Know that this is a setting you can adjust.
+
+---
+
+## Data Retention, Sampling, and the Reporting Interface
+
+UA defaulted to storing user-level data for 26 months. GA4 defaults to **2 months**, with a maximum of 14 months for user and event data. If you're not actively exporting or warehousing data, you will lose historical access.
+
+Set your clients' GA4 properties to 14 months immediately if you haven't already. It's a one-click change under Admin > Data Settings > Data Retention.
+
+On sampling: UA's standard reports were largely unsampled, but any custom report over a certain threshold would sample. GA4 handles this differently:
+
+- **Standard reports** in the GA4 interface are unsampled but use aggregated data with thresholds
+- **Explorations** (the custom analysis section) can hit sampling at high traffic volumes
+- **BigQuery export** (free in GA4) gives you raw, unsampled event data
+
+That BigQuery integration is one of the most significant upgrades in GA4. UA's BigQuery export was only available to GA360 (paid) customers. Now any property can connect it. For agencies doing serious analysis or building client dashboards, this opens up a lot.
+
+---
+
+## Conversions, Goals, and What Counts as Success
+
+In UA, you set up **Goals** — destination URLs, durations, events, pages per session. They had a 20-goal limit per view, and once triggered, a goal counted once per session regardless of how many times it fired.
+
+GA4 replaced Goals with **Conversions**, which are just events you've marked as important. The change sounds minor but has real implications:
+
+- No hard limit on conversions (though Google recommends keeping it manageable)
+- A conversion event can fire multiple times in a session — important for e-commerce or multi-step forms
+- You can import GA4 conversions directly into Google Ads without needing to set up a separate tag
+
+The downside is that GA4 doesn't have equivalent functionality to UA's **View** layer. In UA, you could create multiple views of the same property — filtered views, raw data views, test views. GA4 has no views. You get one data stream per property. Filters now happen at the property level and affect everything. Be careful with any filters you apply.
+
+---
+
+## What This Means for Day-to-Day Client Work
+
+The reporting interface in GA4 is less immediately intuitive than UA. Custom reporting that took two clicks in UA now lives inside Explorations, which has a steeper learning curve. Standard reports have improved with recent updates, but you'll still spend more time building the views you need.
+
+A few practical adjustments that help:
+
+- **Build a custom dashboard in GA4's "Reports Snapshot"** for each client using their most important metrics — don't send clients into the raw interface
+- **Document your conversion events** clearly, especially if you've migrated from UA goals or imported from Google Tag Manager
+- **Watch for the "unset" dimension** appearing in reports — this usually means traffic is arriving without proper campaign tagging, which is fixable with consistent UTM use
+- **Compare date ranges carefully** — GA4 and UA calculate sessions differently, so a direct year-over-year comparison between the two platforms will show discrepancies that aren't real performance changes
+
+The most common client question you'll get is "why do my numbers look different?" Having a clear, simple explanation ready — event-based model, different session logic, engagement rate vs. bounce rate — will save you a lot of back-and-forth.
+
+---
+
+If you're managing GA4 reporting across multiple local business clients, keeping track of conversion events, campaign performance, and client-specific KPIs in separate tabs gets old fast. Campaignly's reporting tools let you pull GA4 data alongside your Google Ads and Meta Ads performance into a single client-facing view — so you spend less time building reports and more time acting on them. [See how Campaignly handles multi-channel reporting →]

@@ -12,6 +12,108 @@ featured: false
 schema: article
 ---
 
-# Understanding GA4 Reports
+If you've recently switched from Universal Analytics, knowing **how to read GA4 reports** is the first skill you need to rebuild. The interface looks different, the metrics have changed, and some of the reports you relied on are gone entirely. This guide walks you through the three reports that matter most for client work — Traffic Acquisition, Engagement, and Conversions — and shows you exactly what to look at and why.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## Why GA4 Reports Feel Confusing at First
+
+GA4 replaced session-based tracking with an event-based model. Every interaction — a page view, a button click, a form submission — is now an *event*. That shift changes how you read the numbers.
+
+A few things to keep in mind before you dig in:
+
+- **"Sessions" still exist**, but they're calculated differently. Direct session comparisons to UA data will be off.
+- **The default reports are in the left nav under "Reports."** Don't confuse these with Explorations, which are custom analysis tools.
+- **Date ranges don't auto-update.** Always check the date picker before sending screenshots to a client.
+
+---
+
+## Traffic Acquisition Report
+
+**Where to find it:** Reports → Acquisition → Traffic Acquisition
+
+This report answers: *Where are visitors coming from?*
+
+The default breakdown is by **Session default channel group** — Organic Search, Paid Search, Direct, Referral, Organic Social, and so on. This is usually what you want for a top-level client overview.
+
+| Column | What It Tells You |
+|---|---|
+| Sessions | Total visits attributed to that channel |
+| Engaged sessions | Sessions lasting 10s+, with a conversion, or 2+ page views |
+| Engagement rate | Engaged sessions ÷ total sessions |
+| Avg. engagement time per session | Replaces "Avg. session duration" from UA |
+| Conversions | Completed key events from that channel |
+
+**What to watch:** Engagement rate is a better signal than bounce rate ever was. A channel driving 500 sessions at 25% engagement rate is underperforming compared to one sending 150 sessions at 70%. Volume without engagement rarely converts.
+
+If you're running Google Ads or Meta campaigns for a client, switch the primary dimension to **Session campaign** or **Session source / medium** to see granular campaign-level data. GA4 won't always pull campaign names cleanly if UTM tagging is inconsistent — flag that early.
+
+---
+
+## Engagement Report
+
+**Where to find it:** Reports → Engagement → Overview (or Pages and Screens)
+
+This report answers: *What are people doing once they arrive?*
+
+The Engagement Overview gives you a snapshot — key events, top pages, top conversions. But the **Pages and Screens** sub-report is where most of the useful work happens.
+
+Key columns to focus on:
+
+| Column | What It Tells You |
+|---|---|
+| Views | Total page views (includes repeat views) |
+| Users | Unique users who saw that page |
+| Views per user | How often the same user returns to that page |
+| Avg. engagement time | Time actively spent on that page |
+| Event count | Total events triggered on that page |
+| Conversions | Key events completed on that page |
+
+**What to watch:** Sort by **Avg. engagement time** on high-traffic pages. A top-landing page with under 20 seconds average engagement time usually means a messaging mismatch — the ad or search result promised something the page didn't deliver.
+
+For local clients, check whether the Google Business Profile landing page or service pages are getting visits but low engagement. That's a content or UX problem worth surfacing in your reporting.
+
+The **Events** sub-report (under Engagement) shows you every event being tracked. If a client says "we set up conversion tracking," this is where you verify it. Look for events like `generate_lead`, `purchase`, `form_submit`, or custom event names. If they're missing or have suspiciously low counts, investigate before building any reports around them.
+
+---
+
+## Conversions Report (Key Events)
+
+**Where to find it:** Reports → Engagement → Conversions
+
+*Note: GA4 renamed "Conversions" to "Key Events" in the interface in 2024 for GA4 properties not linked to Google Ads. If you see "Key Events" in your client's account, it's the same thing.*
+
+This report answers: *Which goals are being completed, and how often?*
+
+A conversion in GA4 is any event you've marked as a key event. Common ones for local service clients:
+
+- `generate_lead` (form submissions)
+- `click` on a phone number (if configured)
+- `book_appointment`
+- `purchase` (ecommerce)
+
+The conversions report breaks down key event completions by event name. You can also see conversions **segmented by channel** by going back to Traffic Acquisition and adding Conversions as a visible metric — that cross-view is often the clearest way to show a client which channel is actually driving results.
+
+**What to watch:** Don't assume a high conversion count means things are working. Check the **conversion event name** carefully. If `page_view` was accidentally marked as a key event, the numbers will look inflated and meaningless. It happens more than you'd think.
+
+For clients running Google Ads, make sure GA4 key events are imported into Google Ads as conversions and that auto-tagging is enabled. Otherwise Ads will report conversion data from its own tracking, and the numbers won't match what you're showing in GA4 — a fast way to lose a client's trust.
+
+---
+
+## Reading GA4 Reports Without Getting Lost
+
+A few practical habits that save time:
+
+**Use comparisons.** The date picker lets you compare to a previous period or the same period last year. Always show clients context, not just raw numbers.
+
+**Filter before you report.** GA4 pulls all traffic by default. If a client's site has significant internal traffic or bot traffic, add filters under Admin → Data Streams → Configure tag settings.
+
+**Save your configurations.** If you've set up a view in Explorations or customized a report, save it. GA4 doesn't remember your preferences between sessions automatically.
+
+**Check data thresholds.** GA4 applies data thresholds to some reports (especially when demographics filters are active). A small orange icon at the top of a report signals that some data is being withheld. Adjust your date range or remove filters to clear it.
+
+Understanding these three reports — Traffic Acquisition, Engagement, and Conversions — covers 80% of what most local marketing clients actually need to see. Get comfortable with them before you build custom dashboards or exploratory analysis.
+
+---
+
+If you're sending GA4 data to clients on a regular basis, Campaignly's reporting tools let you pull Traffic Acquisition, Engagement, and Conversion metrics into white-labeled client reports automatically — so you're not copying screenshots every month. See how it works in the [Campaignly Reports feature](https://campaignly.com/features/reports).

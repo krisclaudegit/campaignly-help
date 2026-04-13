@@ -12,6 +12,94 @@ featured: false
 schema: article
 ---
 
-# Meta Ads Campaign Structure Explained
+Meta Ads campaign structure follows a three-level hierarchy: campaigns, ad sets, and ads. If you're managing accounts for local business clients, understanding how these levels interact directly affects your budget control, targeting precision, and performance data. Get the structure wrong and you'll waste spend, muddy your reporting, and lose the ability to test effectively. Get it right and you can scale what works fast.
 
-> This article is coming soon. Check back shortly for the full guide.
+Here's how each level works — and how to organize them so your campaigns are actually manageable.
+
+---
+
+## The Three Levels: What Each One Controls
+
+**Campaign level** is where you set your objective. Meta uses this to determine how it optimizes delivery. Your choices include Awareness, Traffic, Engagement, Leads, App Promotion, and Sales. The objective you pick locks in the optimization options available at the ad set level, so choose carefully. A local plumber running lead gen campaigns should be on the Leads objective — not Traffic, even if the traffic numbers look better.
+
+**Ad set level** is where the real targeting and budget decisions live. Each ad set contains:
+
+- Audience (interests, custom audiences, lookalikes, or Advantage+ audiences)
+- Placements (Facebook, Instagram, Reels, Stories, etc.)
+- Budget and schedule
+- Optimization event (link clicks, landing page views, leads, purchases)
+
+**Ad level** is where your creative lives — the images, videos, copy, headlines, and calls to action. Multiple ads within one ad set let Meta's algorithm rotate and favor the best performer, or let you run controlled tests.
+
+One common mistake: treating ad sets like ad creative containers. They're not. Ad sets define *who sees your ad and when*. The creative inside is almost a separate conversation.
+
+---
+
+## How to Organize Campaigns for Local Business Clients
+
+For most local business accounts, you'll run into trouble if you build too many campaigns too fast. Here's a structure that works well in practice:
+
+**One campaign per objective.** Don't mix a retargeting goal with a cold prospecting goal inside the same campaign. They have different economics and different audiences. Keeping them separate makes budget allocation cleaner and reporting more meaningful.
+
+**One ad set per audience segment.** If you're testing cold audiences against a custom audience of website visitors, put them in separate ad sets — even within the same campaign. This lets you see exactly where your cost-per-lead is coming from.
+
+**Two to four ads per ad set.** Meta recommends at least two or three ads so the algorithm has options. More than five and you'll dilute impressions before any single ad gets enough data to optimize properly.
+
+A practical example: a local dental practice running lead gen campaigns might look like this:
+
+| Campaign | Ad Set | Ads |
+|---|---|---|
+| Leads — New Patients | Cold — Interest: Dental Care (local radius) | 3 creative variants |
+| Leads — New Patients | Retargeting — Website visitors (90 days) | 2 creative variants |
+| Awareness — Brand | Broad — Local radius 10mi | 2 video ads |
+
+Three campaigns, five ad sets, seven ads. Manageable. Auditable. Easy to scale up the ad sets that perform.
+
+---
+
+## Budget: Campaign-Level vs. Ad Set-Level
+
+Meta gives you two budget options: **Advantage Campaign Budget (ACB)**, formerly Campaign Budget Optimization (CBO), or manual budgets set at the ad set level.
+
+With ACB, Meta distributes your campaign budget across ad sets automatically, pushing more spend toward whichever ad set is hitting your optimization goal most efficiently. This works well when you trust the algorithm and your ad sets are genuinely competitive with each other.
+
+Manual ad set budgets give you more control. If one ad set is for a high-value retargeting audience and another is cold prospecting, you probably don't want Meta pulling budget away from your retargeting just because cold prospecting volume is higher.
+
+**Use ACB when:** all ad sets target similar audience types and you want Meta to find the best performer.
+
+**Use manual budgets when:** your ad sets serve strategically different purposes (retargeting vs. prospecting, different products, different offers).
+
+For local campaigns with smaller budgets — say, under $1,500/month — manual budgets at the ad set level often perform more predictably. ACB needs data volume to work well, and tight local audiences don't always generate enough conversions to feed it.
+
+---
+
+## Common Structural Mistakes That Kill Performance
+
+**Audience overlap between ad sets.** If two ad sets in the same campaign are targeting overlapping audiences, they'll bid against each other in the same auction. Use Meta's Audience Overlap tool before launching. Or use Advantage+ audiences and let Meta handle deduplication.
+
+**Too many campaigns for one account.** Some agencies build a new campaign for every promotion or test. This fragments your data and slows down Meta's learning phase, which requires roughly 50 optimization events per ad set per week to exit. Fewer, better-funded campaigns generally outperform a dozen underfunded ones.
+
+**Mismatched objectives and optimization events.** Running a Leads campaign but optimizing for link clicks because the pixel isn't set up yet? You'll get clicks, not leads. Fix the tracking before you launch, or you're paying for the wrong signal.
+
+**Renaming campaigns without documenting changes.** When a client asks why performance dropped in week three, you need a clear record of what changed and when. Naming conventions and a change log matter more than most people realize.
+
+---
+
+## Naming Conventions That Actually Help
+
+A consistent naming system saves hours across an account lifecycle. Here's a format that works for local business accounts:
+
+**Campaign:** `[Client] | [Objective] | [Funnel Stage]`
+Example: `CityDental | Leads | Prospecting`
+
+**Ad set:** `[Audience Type] | [Location] | [Budget]`
+Example: `Interest-Dental | 10mi | $30pd`
+
+**Ad:** `[Format] | [Offer] | [Version]`
+Example: `Static | FreeConsult | v2`
+
+This makes it immediately clear what you're looking at inside Ads Manager — without opening every ad set to check. It also makes client reporting significantly faster.
+
+---
+
+Managing Meta Ads across multiple local business clients means staying on top of campaign structures, naming conventions, budgets, and performance all at once. Campaignly's client reporting tools let you pull Meta Ads performance data into clean, branded reports so you can show clients exactly what's working at each level of the campaign — without rebuilding the same spreadsheet every month. [See how Campaignly handles Meta Ads reporting →]

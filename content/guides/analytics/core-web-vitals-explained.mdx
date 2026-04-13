@@ -12,6 +12,106 @@ featured: false
 schema: article
 ---
 
-# Core Web Vitals Explained
+If you've been digging into Google Search Console lately, you've probably seen a section called Core Web Vitals and wondered how much attention it deserves. This **Core Web Vitals guide** breaks down exactly what these metrics measure, why Google cares about them, and what you can actually do to improve scores for your local business clients — without needing a developer on speed dial.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## What Core Web Vitals Actually Measure
+
+Core Web Vitals are three specific page experience signals Google uses to evaluate how a webpage feels to real users. Not how fast it loads in a vacuum — how it *behaves* while loading.
+
+Here's the breakdown:
+
+| Metric | Full Name | What It Measures | Good Score |
+|---|---|---|---|
+| LCP | Largest Contentful Paint | How long until the main content loads | ≤ 2.5s |
+| INP | Interaction to Next Paint | Responsiveness to user input (clicks, taps) | ≤ 200ms |
+| CLS | Cumulative Layout Shift | Visual stability — does content jump around? | ≤ 0.1 |
+
+**LCP** is usually the one that hurts most. It's triggered by whatever the largest visible element is — often a hero image, a block of text, or a video thumbnail. If that takes four seconds to appear, users bounce.
+
+**INP** replaced the older FID metric in March 2024. It measures how quickly a page responds after a user interacts with it. Sluggish JavaScript is usually the culprit.
+
+**CLS** is the one users notice emotionally even if they can't name it. You go to tap a button, the page shifts, you accidentally tap an ad. That's a high CLS score — and Google penalizes it.
+
+---
+
+## Why Core Web Vitals Matter for SEO
+
+Google confirmed Core Web Vitals as a ranking factor in 2021 as part of the Page Experience update. They're not the heaviest signal — content relevance still dominates — but on a competitive SERP where two pages are equally relevant, page experience tips the scales.
+
+For local businesses, this matters more than most people realize. Local search results are packed with near-identical service pages competing for the same keywords. A dentist in Austin has dozens of competitors with similar copy and similar backlinks. Page experience becomes a meaningful differentiator at that level.
+
+There's also a conversion angle. Better Core Web Vitals scores correlate with lower bounce rates and higher conversion rates. Google's own case studies show that improving LCP from 4s to under 2.5s can lift conversions by double digits. Faster, more stable pages just convert better — regardless of any SEO benefit.
+
+Mobile performance is where most local business sites fall apart. Google evaluates Core Web Vitals based on real-world Chrome user data (called the CrUX dataset), and mobile scores are almost always worse than desktop. If a client's site was built on a bloated WordPress theme with a dozen plugins, mobile LCP is probably a problem.
+
+---
+
+## How to Check Core Web Vitals Scores
+
+You have several tools, and they're not all measuring the same thing — which causes confusion.
+
+**Field data** comes from real users. It reflects actual performance in the wild. Google Search Console's Core Web Vitals report uses field data. So does PageSpeed Insights (the top section labeled "Discover what your real users are experiencing"). You need at least 28 days of Chrome user data to see these scores, so new sites won't have them yet.
+
+**Lab data** simulates a page load. PageSpeed Insights and Lighthouse both produce lab data. It's useful for diagnosing issues but doesn't match field data exactly — real-world network conditions, device variety, and third-party scripts behave differently than a controlled test.
+
+Use both. Start with Search Console to see which URLs Google is flagging. Then run those specific URLs through PageSpeed Insights to get diagnostic details.
+
+Other tools worth knowing:
+
+- **Chrome DevTools** — Performance tab gives frame-by-frame load analysis
+- **WebPageTest.org** — More granular than PageSpeed Insights, good for waterfall charts
+- **Screaming Frog** — Can pull PageSpeed API data in bulk for large sites
+
+---
+
+## How to Actually Improve Your Scores
+
+### Fix LCP First
+
+The fastest LCP wins usually come from images. Make sure the hero image is:
+
+- Compressed (use WebP format)
+- Properly sized for mobile
+- Not lazy-loaded (lazy loading delays LCP images, which is counterproductive)
+- Preloaded with a `<link rel="preload">` tag if possible
+
+Hosting matters too. A slow server response time (TTFB over 600ms) will drag down LCP before the browser even starts rendering. If a client's site is on cheap shared hosting, upgrading to managed WordPress hosting or a CDN often produces immediate improvements.
+
+### Reduce CLS
+
+The most common CLS culprits:
+
+- Images without defined width/height attributes
+- Ads that load after content and push things down
+- Web fonts causing text to reflow when they load (use `font-display: swap` and preload key fonts)
+- Dynamic content injected above existing content
+
+Set explicit dimensions on every image and embed. That alone eliminates most CLS issues on local business sites.
+
+### Improve INP
+
+INP problems are trickier to fix without developer help. The usual suspects are heavy JavaScript files executing on the main thread and third-party scripts (chat widgets, tracking pixels, tag manager firing too many tags).
+
+Practical steps without touching code:
+
+- Audit Google Tag Manager and remove tags that are no longer in use
+- Delay non-critical scripts so they don't block interaction
+- Consider replacing heavy page builder elements with lighter alternatives
+
+Even removing one unused plugin on a WordPress site can meaningfully reduce JavaScript execution time.
+
+---
+
+## Tracking Progress Over Time
+
+Core Web Vitals aren't a one-time fix. Scores fluctuate as you add new content, install plugins, or change themes. Build a habit of checking Search Console's Core Web Vitals report monthly, alongside your standard SEO reporting.
+
+Set up URL-level monitoring so you catch regressions fast — a new landing page with an unoptimized hero image can quietly pull down a client's overall score before anyone notices.
+
+Reporting these scores to clients is also a straightforward way to demonstrate technical SEO value. Most local business owners have no idea this data exists. Showing them a before/after improvement in LCP is tangible proof your work is doing something.
+
+---
+
+If you're building monthly reports for local clients that include Core Web Vitals alongside rankings, traffic, and ad performance, [Campaignly's reporting tools](https://campaignly.com) pull all of that into a single branded dashboard — so you can stop copying numbers between tabs and start focusing on actually improving them.

@@ -12,6 +12,118 @@ featured: false
 schema: article
 ---
 
-# Schema Markup for Local Businesses
+## What Is Schema Markup and Why Does It Matter for Local SEO?
 
-> This article is coming soon. Check back shortly for the full guide.
+Schema markup is structured data code you add to a website to help search engines understand the content on each page. For local businesses, **schema markup local business** implementation means Google can read your business name, address, phone number, hours, and service area directly from the page — not just guess at it.
+
+The practical payoff: richer search results. Think star ratings under a business listing, a knowledge panel showing hours, or a map result that surfaces before organic links. None of that happens reliably without structured data telling Google exactly what it's looking at.
+
+Local SEO is competitive. A dental practice or HVAC company ranking against dozens of nearby competitors needs every edge available. Schema doesn't guarantee a top ranking, but it gives search engines cleaner signals — and cleaner signals lead to better visibility over time.
+
+---
+
+## The Most Important Schema Types for Local Businesses
+
+Not all schema types are equal. Focus on the ones that directly affect how a local business appears in search.
+
+| Schema Type | What It Does | Priority |
+|---|---|---|
+| `LocalBusiness` | Core type for all local businesses | High |
+| `PostalAddress` | Structured NAP (name, address, phone) | High |
+| `GeoCoordinates` | Exact lat/long for map accuracy | Medium |
+| `OpeningHoursSpecification` | Hours per day, holiday hours | High |
+| `Review` / `AggregateRating` | Shows star ratings in SERPs | High |
+| `Service` | Describes individual services offered | Medium |
+| `FAQPage` | Adds expandable Q&A to search result | Medium |
+
+Start with `LocalBusiness`, `PostalAddress`, and `OpeningHoursSpecification`. These three give Google the foundational data it needs to surface a business accurately in local results.
+
+`LocalBusiness` is itself a broad type. Use a more specific subtype when it fits — `Dentist`, `Plumber`, `Restaurant`, `AutoRepair`. Specific types signal relevance more clearly than the generic parent type.
+
+---
+
+## How to Write and Add Local Business Schema
+
+Schema markup is written in JSON-LD format, which Google recommends. It sits inside a `<script>` tag in the page's `<head>` or `<body>` — it doesn't change what visitors see, only what search engines read.
+
+Here's a basic example for a plumbing company:
+
+```json
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "name": "Riverside Plumbing Co.",
+  "url": "https://www.riversideplumbing.com",
+  "telephone": "+1-555-234-5678",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "412 Oak Street",
+    "addressLocality": "Riverside",
+    "addressRegion": "CA",
+    "postalCode": "92501",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.9806,
+    "longitude": -117.3755
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$",
+  "image": "https://www.riversideplumbing.com/images/logo.png"
+}
+</script>
+```
+
+**Where to add it:** On WordPress, paste it into the header using a plugin like *Insert Headers and Footers* or through your SEO plugin (Yoast, RankMath both have schema tools). On custom sites, drop it directly into the `<head>` section.
+
+**One important rule:** The data in your schema must match what's on the page. If your site shows "Mon–Fri 8am–6pm" but your schema says something different, Google may disregard the markup entirely.
+
+---
+
+## Common Mistakes That Kill Schema Effectiveness
+
+Even well-intentioned schema implementations fail. Here's what to watch for:
+
+**Mismatched NAP data.** If your schema address says "Suite 4B" but your Google Business Profile says "Ste. 4B," that inconsistency erodes trust signals. Pick one format and use it everywhere — website, schema, GBP, directories.
+
+**Using the wrong business type.** Marking a nail salon as `LocalBusiness` when `NailSalon` exists as a specific type is a missed opportunity. Always check [schema.org](https://schema.org) for the most specific applicable type.
+
+**Marking up content that isn't visible on the page.** Schema is meant to describe what's on the page — not inject information Google can't verify. Adding services or hours in schema that don't appear in the page content violates Google's guidelines.
+
+**Forgetting to validate.** Always run new schema through Google's [Rich Results Test](https://search.google.com/test/rich-results) before considering it done. It catches syntax errors, missing required fields, and flags which rich result features your markup qualifies for.
+
+**Set-it-and-forget-it thinking.** Business hours change. Owners change. Phone numbers change. Schema needs to be updated whenever that information changes — just like you'd update a Google Business Profile.
+
+---
+
+## Scaling Schema Across Multi-Location Clients
+
+If you manage SEO for businesses with multiple locations, schema needs to be location-specific. One generic schema block on a homepage doesn't cover three separate service areas.
+
+The cleanest approach: create a dedicated location page for each service area or physical location, and add unique schema to each page. Each schema block should include that location's specific address, phone number, hours, and geo coordinates.
+
+For service-area businesses without a storefront — a mobile dog groomer, a home cleaning company — use `areaServed` instead of a physical address:
+
+```json
+"areaServed": {
+  "@type": "City",
+  "name": "Sacramento"
+}
+```
+
+You can also pass an array of cities or postal codes if the business covers multiple areas.
+
+Multi-location schema management is one of the more time-consuming parts of local SEO at scale. Building a repeatable process — templated JSON-LD blocks with variable fields for each location — cuts the time significantly and reduces the chance of errors slipping through.
+
+---
+
+If you're managing schema alongside citations, Google Business Profile optimization, and review tracking for multiple local clients, keeping all that data consistent is where things tend to break down. Campaignly's local SEO tools give you a centralized way to manage client location data, track rich result performance, and flag inconsistencies before they affect rankings — so the work you put into schema actually shows up in results.

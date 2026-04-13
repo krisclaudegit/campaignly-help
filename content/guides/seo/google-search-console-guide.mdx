@@ -12,6 +12,118 @@ featured: false
 schema: article
 ---
 
-# Google Search Console: Complete Guide
+If you've never opened Google Search Console for a client's site, you're flying blind on SEO. This **Google Search Console guide** covers everything you need to monitor organic performance, catch technical problems before they cost rankings, and find keyword opportunities your competitors are missing. Best of all, it's free — and it pulls data straight from Google's index.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## Setting Up and Verifying Your Property
+
+Before anything else, you need to verify ownership. Go to [search.google.com/search-console](https://search.google.com/search-console) and add a property. You'll get two options:
+
+- **Domain property** — covers all subdomains and protocols (recommended)
+- **URL-prefix property** — covers only a specific URL and protocol
+
+For most client sites, use the Domain property. Verification happens via DNS record — you'll add a TXT record to the domain registrar. If DNS access is a headache, the HTML tag method works for URL-prefix properties and takes about two minutes via the site's `<head>`.
+
+Once verified, data starts populating within 24–48 hours. Historical data (up to 16 months) appears in the Performance report once connected.
+
+---
+
+## Reading the Performance Report
+
+The Performance report is where you'll spend most of your time. It shows four core metrics:
+
+| Metric | What It Means |
+|---|---|
+| Total Clicks | Users who clicked through to your site from Google |
+| Total Impressions | Times your pages appeared in search results |
+| Average CTR | Clicks divided by impressions |
+| Average Position | Mean ranking position across all queries |
+
+**The real value is in the query-level data.** Filter by page, then cross-reference with queries to see exactly which keywords are driving traffic to which pages.
+
+Look for two patterns in particular:
+
+**High impressions, low CTR** — Your page is ranking but not earning clicks. The fix is usually a stronger title tag or meta description that matches search intent better.
+
+**Position 5–15 queries** — These are your fastest SEO wins. Pages already close to page one need less work to move up than pages buried on page three. Sort by position, filter to positions 5–15, and prioritize those pages for content improvements or link building.
+
+You can extend the date range to 16 months and compare periods to spot trends — useful for reporting to clients on a quarter-over-quarter basis.
+
+---
+
+## Using the URL Inspection and Coverage Reports
+
+### URL Inspection Tool
+
+Type any URL from the client's site into the inspection bar at the top. You'll see:
+
+- Whether the URL is indexed
+- The last crawl date
+- Any crawl or indexing issues
+- The rendered HTML Google sees
+
+This is the fastest way to diagnose why a specific page isn't showing up in search. If a page isn't indexed, Google usually tells you why — whether it's blocked by robots.txt, marked noindex, a redirect, or a soft 404.
+
+After fixing an issue, hit **Request Indexing** to push it back into the crawl queue faster.
+
+### Index Coverage Report
+
+The Coverage report (now called **Indexing** in the updated interface) shows the health of your entire site across four categories:
+
+| Status | Meaning |
+|---|---|
+| Error | Pages Google can't index — need immediate attention |
+| Valid with warnings | Indexed but with potential issues |
+| Valid | Pages successfully indexed |
+| Excluded | Intentionally or unintentionally left out of the index |
+
+Work through errors first. Common ones include:
+
+- **Submitted URL not found (404)** — The URL is in your sitemap but returns a 404. Remove it from the sitemap or redirect it.
+- **Redirect error** — Broken redirect chains. Trace and fix the redirect path.
+- **Crawled but not indexed** — Google visited the page but chose not to index it. This often points to thin content, duplicate content, or poor internal linking.
+
+Don't ignore the Excluded section either. "Discovered – currently not indexed" is a flag that Google found the page but hasn't crawled it yet — usually due to crawl budget issues on larger sites.
+
+---
+
+## Finding Link and Sitemap Insights
+
+### Sitemaps
+
+Submit your XML sitemap under **Indexing > Sitemaps**. This tells Google exactly which pages you want crawled. Check this section regularly — if Google is returning errors on submitted URLs, your sitemap may be outdated or pointing to redirected/deleted pages.
+
+### Links Report
+
+The Links report shows:
+
+- **External links** — Which sites link to you and which pages they link to
+- **Internal links** — Which internal pages receive the most links
+- **Top linking sites and anchor text**
+
+For client reporting, the external links section is a quick way to demonstrate the value of link-building work. For SEO strategy, the internal links section tells you whether your most important pages are getting enough link equity from the rest of the site. If a money page has almost no internal links, that's a fast fix with real impact.
+
+---
+
+## Core Web Vitals and Page Experience
+
+Under **Experience**, you'll find the **Core Web Vitals** report. This breaks down page performance using field data (real user data) split into mobile and desktop.
+
+The three metrics Google measures:
+
+| Metric | Threshold for "Good" |
+|---|---|
+| LCP (Largest Contentful Paint) | Under 2.5 seconds |
+| INP (Interaction to Next Paint) | Under 200 milliseconds |
+| CLS (Cumulative Layout Shift) | Under 0.1 |
+
+Pages are grouped into Poor, Needs Improvement, and Good. Click into any group to see which specific URLs are affected, then use the URL Inspection tool or PageSpeed Insights to diagnose the root cause.
+
+For local business sites, slow image loading and render-blocking scripts are the most common culprits. Most of these issues can be fixed at the hosting or plugin level without touching code.
+
+Core Web Vitals are a confirmed ranking signal, so consistent failures here are worth escalating to developers or site owners — especially before a competitive push.
+
+---
+
+Tracking all of this manually across a dozen client sites gets tedious fast. Campaignly's SEO reporting tools pull data from Google Search Console directly into automated client reports, so you can flag ranking drops, indexing errors, and Core Web Vitals issues without logging into each property separately. [See how Campaignly handles SEO reporting](https://campaignly.com) and cut the time you spend on monthly deliverables.

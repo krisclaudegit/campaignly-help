@@ -12,6 +12,111 @@ featured: false
 schema: article
 ---
 
-# Meta Pixel Setup Guide
+If you're running Facebook or Instagram ads for local clients, a proper **Meta Pixel setup** is non-negotiable. Without it, you're spending money without knowing what's working. The Pixel connects your ad spend to real actions — form submissions, phone calls, purchases, bookings — so you can optimize campaigns and prove ROI to clients. This guide walks you through installation, event configuration, and verification so you're tracking accurately from day one.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## What the Meta Pixel Actually Does
+
+The Meta Pixel is a small piece of JavaScript that lives on your client's website. When someone clicks an ad and lands on the site, the Pixel fires and records what they do next.
+
+That data does three things:
+
+- **Tracks conversions** — tells you which ads drove real results
+- **Builds audiences** — lets you retarget visitors or create lookalikes
+- **Feeds the algorithm** — helps Meta's delivery system find more people likely to convert
+
+Without the Pixel firing correctly, Meta is optimizing in the dark. You're also unable to run conversion-objective campaigns, which consistently outperform traffic or reach objectives for lead generation.
+
+---
+
+## How to Create and Install the Meta Pixel
+
+### Step 1: Create the Pixel in Meta Events Manager
+
+1. Go to [business.facebook.com](https://business.facebook.com) and open **Events Manager**
+2. Click **Connect Data Sources** → **Web** → **Meta Pixel**
+3. Name it after the client (e.g., "Riverside Plumbing Pixel")
+4. Enter the website URL and click **Continue**
+
+You'll get a Pixel ID — save it. Every client needs their own Pixel connected to their own ad account.
+
+### Step 2: Install the Base Code
+
+Meta gives you three installation options:
+
+| Method | Best For |
+|---|---|
+| Manual (copy/paste) | Any site with header access |
+| Partner Integration | WordPress, Shopify, Squarespace, Wix |
+| Email instructions | Handing off to a developer |
+
+**For most local business sites**, the partner integration is fastest. If the site runs on WordPress, use the **Meta Pixel Helper** plugin or install via a header plugin like WPCode.
+
+For manual installs, paste the base code between the `<head>` and `</head>` tags on every page. If your client's site uses a template system, add it to the global header so it fires site-wide automatically.
+
+### Step 3: Add the Pixel to Your Ad Account
+
+In Meta Business Manager, make sure the Pixel is assigned to the correct ad account. Go to **Business Settings → Data Sources → Pixels**, select the Pixel, and confirm it's connected to the right ad account. Missing this step means your campaigns can't use the Pixel even if it's installed.
+
+---
+
+## Configuring Standard Events
+
+The base Pixel code tracks page views, but you need **standard events** to track meaningful conversions. These are pre-defined actions Meta recognizes for optimization.
+
+Key events for local service businesses:
+
+| Event Name | When to Fire It |
+|---|---|
+| `Lead` | Form submission, contact page submit |
+| `Contact` | Click-to-call button, chat initiation |
+| `Schedule` | Booking confirmation page |
+| `CompleteRegistration` | Sign-up or quote request completion |
+| `Purchase` | E-commerce transaction or paid booking |
+
+To add an event, place the event code **below** the base Pixel code on the relevant page, or use Meta's **Event Setup Tool** to add events without touching code.
+
+### Using the Event Setup Tool (No-Code Option)
+
+In Events Manager, select your Pixel and click **Open Event Setup Tool**. Enter the website URL, and Meta loads a visual overlay of the site. You can then click on buttons or URLs to assign events — no developer needed for basic setups.
+
+This works well for tracking "Thank You" page loads as a `Lead` event, which is the most reliable method for form submissions.
+
+---
+
+## Verifying the Pixel is Firing Correctly
+
+Installation mistakes are common and costly. Always verify before running ads.
+
+**Method 1: Meta Pixel Helper Chrome Extension**  
+Install it, visit the client's site, and click the extension icon. It shows which Pixel IDs are firing and whether events are loading correctly. A green checkmark means it's working. Red warnings flag duplicate Pixels, missing events, or mismatched IDs.
+
+**Method 2: Events Manager Test Events**  
+In Events Manager, go to **Test Events** and enter the site URL. Browse the site in the test window — you'll see events firing in real time in the panel on the right. This is the most reliable way to confirm events are reaching Meta's servers.
+
+**Method 3: Check for Common Problems**
+
+- Pixel fires on every page but shows zero events → Event code may be missing or on the wrong page
+- Duplicate Pixel ID warnings → Pixel installed via plugin AND manually; remove one
+- Events showing in test but not in reporting → Normal delay of up to 20 minutes; also check attribution window settings
+
+---
+
+## Connecting Pixel Data to Your Campaigns
+
+Once verified, make sure your campaigns are set to use the Pixel data you've configured.
+
+When creating a campaign with a **Conversion** objective, you'll choose your Pixel and the specific conversion event at the ad set level. Select the event that matches your client's goal — usually `Lead` for service businesses.
+
+A few things to confirm:
+
+- **Attribution window**: Standard is 7-day click, 1-day view. Adjust based on the client's typical decision cycle.
+- **Value optimization**: If you're tracking purchases with values, enable value-based bidding to let Meta prioritize higher-value customers.
+- **Aggregated Event Measurement**: Required for iOS traffic. Prioritize your top conversion events in Events Manager under the client's domain settings — you get up to 8 events per domain, ranked by priority.
+
+Once you have conversion data flowing (aim for at least 50 conversions per event per week), switch campaign bidding to **Lowest Cost** or **Cost Per Result Goal** and let the algorithm optimize with real signal.
+
+---
+
+Tracking setup is one of the tasks that eats time on every new client account — creating the Pixel, verifying installation, configuring events, and making sure it's all connected to the right campaigns. Campaignly's client onboarding tools help you standardize this process across accounts, so you're not rebuilding the same checklist from scratch every time. [See how Campaignly streamlines local ad account setup.](#)

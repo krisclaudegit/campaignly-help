@@ -12,6 +12,104 @@ featured: false
 schema: article
 ---
 
-# GA4 for Beginners: The Complete Guide
+If you've been putting off learning GA4, you're not alone. This **GA4 beginners guide** will cut through the noise and show you exactly what matters — how the platform works, what changed from Universal Analytics, and where to actually start when you open it for the first time.
 
-> This article is coming soon. Check back shortly for the full guide.
+---
+
+## What Makes GA4 Different from Universal Analytics
+
+Universal Analytics (UA) tracked sessions and pageviews. GA4 tracks **events**.
+
+That's the fundamental shift. In UA, a pageview was a pageview. A session was a bucket of hits. Everything was organized around visits to pages.
+
+In GA4, every interaction is an event — a page view, a button click, a form submission, a scroll. This makes the data model more flexible, but it also means the reports look completely different if you're used to UA.
+
+Here's a quick comparison:
+
+| Feature | Universal Analytics | GA4 |
+|---|---|---|
+| Core tracking unit | Sessions / Pageviews | Events |
+| Bounce rate | Yes | Replaced by Engagement Rate |
+| Cross-device tracking | Limited | Built-in via User ID |
+| Data retention | Up to 50 months | Default 2 months (max 14) |
+| Predictive metrics | No | Yes |
+| Free BigQuery export | No | Yes |
+
+The biggest practical difference for client reporting: **bounce rate is gone**. GA4 replaced it with *Engagement Rate* — the percentage of sessions that lasted longer than 10 seconds, had a conversion, or included 2+ pageviews. Most clients find engagement rate more meaningful once you explain it.
+
+---
+
+## The GA4 Interface: Where to Find What You Need
+
+When you first log in, the left sidebar has five main sections. Here's what each one actually does:
+
+**Home** — A summary dashboard. Useful at a glance, but not great for reporting. Skip this for client work.
+
+**Reports** — This is your bread and butter. You'll find Acquisition, Engagement, Monetization, and Retention reports here. The Acquisition section shows where traffic comes from. Engagement shows which pages and events perform.
+
+**Explore** — This is where GA4 gets powerful. Exploration reports let you build custom analyses using funnels, path exploration, and segment overlap. Steeper learning curve, but worth it.
+
+**Advertising** — Attribution reports. Useful if you're running Google Ads for clients and want to see cross-channel conversion paths.
+
+**Admin** — Property settings, data streams, conversions, and user management.
+
+One thing to do immediately in Admin: **set your data retention to 14 months**. The default is 2 months, which means you'll lose historical data fast. Go to Admin → Data Settings → Data Retention and change it.
+
+---
+
+## Setting Up Conversions Correctly
+
+In Universal Analytics, you set Goals. In GA4, you mark events as **conversions**.
+
+GA4 automatically tracks a handful of events out of the box: `page_view`, `session_start`, `first_visit`, `scroll` (90% depth), and `click` (outbound links). But these aren't marked as conversions by default.
+
+To turn any event into a conversion:
+1. Go to **Admin → Events**
+2. Find the event you want to track (e.g., `form_submit` or `purchase`)
+3. Toggle "Mark as conversion" to on
+
+If the event doesn't exist yet, you have two options:
+- **Create it in GA4** using the "Create event" feature (good for simple modifications)
+- **Set it up in Google Tag Manager** (better for anything more complex)
+
+For local business clients, the conversions you almost always want to track:
+- Phone number clicks
+- Contact form submissions
+- Direction requests (if using Google Maps embed)
+- Click-to-call from mobile
+
+These require custom event setup in GTM, but once they're in place, your reporting becomes much more useful than raw traffic numbers.
+
+---
+
+## Reading Reports Without Getting Lost
+
+GA4 reports can feel overwhelming because there's so much data. Here's a practical approach.
+
+**Start with Acquisition → Traffic Acquisition.** This shows sessions broken down by channel: Organic Search, Paid Search, Direct, Referral, Organic Social, etc. This answers the first question every client asks — "where is my traffic coming from?"
+
+**Then go to Engagement → Pages and Screens.** This shows which pages get the most views, average engagement time, and how many events were triggered. Use it to spot your top-performing content and pages that might need work.
+
+**Use comparisons.** At the top of any report, you can add a comparison — for example, "Organic Search vs. Paid Search" or "Mobile vs. Desktop." This is faster than building a custom segment for basic questions.
+
+**Check the date range.** GA4 defaults to the last 28 days. Always set your date range explicitly before sharing any report with a client.
+
+A common trap: GA4 uses **sampled data** in some Explore reports when the dataset is large. If you see a small icon near the top of a report indicating sampling, your numbers may not be exact. For most local business clients, this won't be an issue — traffic volumes are usually low enough to avoid it.
+
+---
+
+## The Fastest Way to Get Value From GA4 Right Now
+
+You don't need to master every report to make GA4 useful for clients. Focus on these three things first:
+
+1. **Fix data retention** — 14 months, not 2.
+2. **Set up your key conversions** — phone clicks and form submits at minimum.
+3. **Build one standard report you send every month** — traffic by channel, top pages, and conversion count. That's it.
+
+Once you have those working, you can layer in more: custom Explore reports, funnel analysis, audience segments for remarketing. But the basics will already give clients more insight than most agencies deliver.
+
+One more thing worth knowing: GA4 properties can be linked to Google Ads, Google Search Console, and BigQuery — all for free. Linking Search Console gives you the organic keyword and landing page data that's otherwise hidden. Do this for every client property. Go to Admin → Property Settings → Product Links to connect them.
+
+---
+
+Keeping all of this organized across multiple clients — tracking which properties are set up, which conversions are live, and which accounts still need attention — is exactly the kind of operational headache Campaignly is built to solve. [Campaignly's client management dashboard](https://campaignly.com) lets you track analytics setup status, campaign performance, and reporting tasks across every account in one place, so nothing slips through the cracks.
