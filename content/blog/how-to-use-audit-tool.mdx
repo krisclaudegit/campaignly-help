@@ -1,84 +1,123 @@
 ---
 title: "How to Use Campaignly's Audit Tool to Find Campaign Gaps"
-description: "A walkthrough of Campaignly's audit tool — how it works, what it checks, and how to act on the results."
+description: "A walkthrough of Campaignly's audit tool — what it checks, how to interpret results, and how to prioritize fixes for your clients."
 section: blog
-category: blog
-tags: [blog, guides]
-seoKeyword: ""
-lastUpdated: 2026-04-12
+category: guides
+tags: []
+seoKeyword: "campaign audit tool"
+lastUpdated: 2026-04-27
 author: Campaignly Team
 readTime: 6
 featured: false
 schema: article
 ---
 
-Most campaign audits happen too late — after wasted spend, missed leads, or a client asking why results dropped. A proactive audit process changes that. Here's how to use Campaignly's audit tool to surface gaps before they become problems.
+Most campaign problems don't announce themselves. A client's Google Business Profile has the wrong phone number. Their landing page loads in six seconds on mobile. Their meta descriptions are missing on half their service pages. These aren't dramatic failures — they're quiet gaps that drain budget and suppress results. And when you're managing ten or fifteen clients, you don't have time to manually hunt for every one of them.
 
-## What the Audit Tool Actually Does
+That's exactly what Campaignly's **campaign audit tool** was built for. It runs a structured check across the channels that matter most for local campaigns — search, ads, listings, and on-page SEO — and gives you a prioritized list of what needs fixing. This guide walks you through how to use it, how to read the results, and how to turn those results into action for your clients.
 
-Campaignly's audit tool runs a structured diagnostic across your active campaigns — Google Ads, Meta Ads, and local SEO signals — and flags issues by category and severity. It's not just a health score. It produces a prioritized list of specific problems with context on why each one matters.
+## What the Audit Tool Actually Checks
 
-Think of it less like a report card and more like a checklist from someone who's reviewed thousands of campaigns. The output is actionable, not decorative.
+Campaignly's audit isn't a single-dimension scan. It evaluates multiple layers of a client's local marketing presence, then flags issues by severity. Here's what it covers:
 
-The tool pulls live data from your connected accounts, so the audit reflects what's actually running — not cached snapshots. That matters when you're managing campaigns that change frequently.
+**Google Business Profile (GBP)**
+- NAP consistency (name, address, phone) across the profile and website
+- Category selection and completeness
+- Review count and average rating
+- Photo quantity and recency
+- Business description and attribute usage
 
-## Running Your First Audit
+**On-Page SEO**
+- Title tags and meta descriptions (missing, duplicate, or too long)
+- H1 structure
+- Page speed on mobile and desktop
+- Schema markup presence (especially LocalBusiness schema)
+- Internal linking gaps
 
-Start from the Campaigns dashboard. Select the client account you want to audit, then hit **Run Audit** in the top right. You can audit a single campaign or the full account — start with the full account if you haven't done this before.
+**Landing Pages**
+- Load time
+- Mobile responsiveness
+- CTA clarity and placement
+- Form functionality
+- Tracking pixel or tag presence (Google Ads, Meta)
 
-The audit takes 60–90 seconds depending on account size. While it runs, you'll see it checking across several categories:
+**Ad Campaign Alignment**
+- Whether ad copy matches landing page messaging
+- Keyword-to-landing-page relevance
+- Conversion tracking status
+- Geographic targeting accuracy
 
-- **Campaign structure** — ad group organization, keyword grouping, match type distribution
-- **Bidding and budget** — bid strategy alignment, budget pacing, impression share loss
-- **Ad creative** — ad strength, missing headlines, RSA asset variety
-- **Audience and targeting** — audience exclusions, location targeting, demographic gaps
-- **Tracking and conversion setup** — tag health, conversion actions, attribution settings
-- **Local signals** (if connected) — Google Business Profile completeness, review response rate, NAP consistency
+Each area gets scored individually, and you get a combined health score for the client. That score isn't meant to be a vanity metric — it's a triage tool.
 
-Each category gets flagged as Good, Needs Attention, or Critical. Critical items are ones that are actively costing you — missing conversion tracking, campaigns running to the wrong location, zero impression share due to budget constraints.
+## How to Run Your First Audit
 
-## Reading the Results Without Getting Overwhelmed
+Getting started takes about two minutes:
 
-The audit will surface more than you expect the first time. That's normal. Don't try to fix everything at once.
+1. **Add your client's business** — Enter their website URL, business name, and primary location. If they have a Google Business Profile, connect it for deeper data.
+2. **Select the audit scope** — You can run a full audit or limit it to specific areas (e.g., just SEO and GBP if you're not managing their ads).
+3. **Hit "Run Audit"** — The tool crawls the site, checks external listings, and pulls in available ad account data. Most audits complete within 60–90 seconds.
+4. **Review the results dashboard** — Issues appear grouped by category, color-coded by severity: red (critical), yellow (moderate), and blue (informational).
 
-Filter by **Critical** first. These are the campaign gaps that are bleeding performance right now. A common one: conversion tracking set to "every conversion" instead of "one per click" on lead gen forms — which inflates conversion counts and distorts your optimization signals.
+You don't need to connect every platform to get value. Even a URL-only audit will surface SEO and landing page problems that many clients don't know they have.
 
-Next, look at the **Needs Attention** flags. These are usually structural issues — things like all keywords in one ad group, broad match without Smart Bidding, or RSAs with fewer than five unique headlines. They're not emergencies, but they compound over time.
+### A Quick Note on Permissions
 
-Each flagged item has an expand arrow. Click it and you get three things:
+If you want the ad alignment checks, you'll need read access to the client's Google Ads or Meta Ads account. Campaignly uses read-only connections — it never modifies campaigns or budgets.
 
-1. **What was found** — the specific issue in plain language
-2. **Why it matters** — the downstream impact on performance
-3. **What to do** — a concrete fix, sometimes with a direct link to the relevant setting in your ad platform
+## How to Interpret Your Audit Results
 
-That third piece is where Campaignly saves real time. You're not googling "how to fix impression share loss" — the answer is right there.
+A long list of issues can feel overwhelming, especially when a client is watching. The key is understanding what the severity levels mean in practice.
 
-## Turning Audit Results Into Client Conversations
+| Severity | What It Means | Example |
+|----------|--------------|---------|
+| **Red — Critical** | Actively costing money or blocking conversions | Broken conversion tracking, wrong phone number on GBP, landing page returning a 404 |
+| **Yellow — Moderate** | Reducing performance but not breaking anything | Missing meta descriptions, slow page speed, no LocalBusiness schema |
+| **Blue — Informational** | Optimization opportunities, not urgent | Low photo count on GBP, thin business description, missing alt text on images |
 
-The audit isn't just a tool for your own workflow — it's a client communication asset.
+**Start with red items.** These are the ones where a fix produces an immediate, measurable impact. A client whose Google Ads conversion tag is broken isn't just losing data — they're flying blind on what's working.
 
-Export the audit report as a PDF from the top right of the results screen. The exported version is clean and readable — designed to share with a client, not just an internal team. It groups issues by category, uses plain language, and includes a summary section at the top showing the overall account health score and top three priority fixes.
+Yellow items are your next sprint. They tend to compound: a slow landing page with weak meta descriptions and no schema will consistently underperform, even if no single issue looks catastrophic on its own.
 
-Use this for onboarding new clients. Running an audit on their existing account during a sales conversation is one of the fastest ways to demonstrate expertise and build trust. You're showing them problems their current agency missed — with receipts.
+Blue items make great "proactive recommendations" in client reports. They show you're paying attention to details and give you a roadmap for ongoing optimization work.
 
-For existing clients, build a monthly audit into your reporting rhythm. A quick audit before you send the monthly report catches anything that shifted during the month — bid strategy changes that silently switched, ad schedules that reset, budgets that hit limits without triggering alerts.
+### Don't Fix Everything at Once
 
-## Common Gaps the Audit Catches That People Miss
+This is a common trap. You see 23 issues and try to resolve all of them in a week. Instead, batch your fixes:
 
-A few patterns show up consistently across accounts:
+- **Week 1:** All red items
+- **Week 2–3:** Yellow items, grouped by type (all SEO fixes together, all GBP fixes together)
+- **Ongoing:** Blue items folded into your regular optimization cadence
 
-**Location targeting set to "presence or interest"** instead of "presence only." This lets Google show your ads to people who are interested in your client's location but not physically there. For local businesses, this wastes budget on people who will never walk in or call.
+This approach is easier to manage, easier to report on, and gives you clear before-and-after data for each round of fixes.
 
-**Missing negative keywords at the campaign level.** The audit checks whether your campaigns have any negatives applied and flags accounts running without them. For a plumber running broad or phrase match, this is critical — they're likely showing for job listings, DIY tutorials, and competitor brand searches.
+## Turning Audit Findings into Client Reports
 
-**Google Business Profile with unanswered reviews.** If you have the local signals connection enabled, the audit picks this up. Review response rate affects local pack rankings, and most clients don't know that. It's an easy win to highlight.
+Raw audit data is useful for you. It's not useful for most clients. They don't need to know what LocalBusiness schema is — they need to know that their business isn't showing up as well as it could in local search results.
 
-**Conversion actions that exist but aren't applied.** This one is subtle — a conversion action is set up correctly in Google Ads, but it's not attached to any campaign. The audit flags orphaned conversion actions so you can actually use them.
+Campaignly lets you export audit results into a **client-facing report** that translates technical findings into plain language. Each issue includes:
 
-**Ad schedules running 24/7 without data to support it.** If a client's business is only open Monday–Friday 9–5, running ads at 2am Saturday usually means wasted spend on leads nobody will answer. The audit cross-references business hours (pulled from GBP if connected) and flags the mismatch.
+- A brief explanation of why it matters
+- The estimated impact (high, medium, low)
+- A recommended fix
 
----
+You can customize which items appear in the report. This is important. If you're only hired to manage ads, sending a report full of SEO issues might confuse the scope — or it might be a great upsell opportunity. That's your call.
 
-If you're managing more than two or three client accounts, running audits manually — even with a good checklist — is slow and inconsistent. Campaignly's audit tool makes it systematic.
+### Using Audits for Prospecting
 
-[Try the audit tool on your next client account at Campaignly](https://campaignly.com) — the first audit usually finds at least one issue worth fixing before your next report goes out.
+Some agencies run audits *before* signing a client. A free audit gives a prospect a concrete look at what's wrong and positions you as the person who found it. It's specific, it's tangible, and it's a lot more persuasive than a generic capabilities deck.
+
+You can run audits for any business with a public website — no account connection required for the baseline checks. Use the exportable report as your pitch document.
+
+## How Often Should You Run Audits?
+
+A one-time audit is a snapshot. Regular audits turn Campaignly into a monitoring system.
+
+**Recommended cadence:**
+
+- **Monthly** for active ad campaign clients (catch tracking issues, landing page changes, or GBP edits that someone made without telling you)
+- **Quarterly** for SEO-only or GBP management clients
+- **Before and after** any major change — site redesign, new landing pages, campaign restructure
+
+Each audit is timestamped and stored, so you can compare results over time. This makes quarterly business reviews much easier: pull up the audit from three months ago, compare it to today, and show the client exactly what improved and what's left.
+
+Campaignly's audit tool surfaces the issues that quietly eat into your clients' results — so you can fix them before they show up as lost budget or missed leads. If you haven't tried it yet, [run a free audit](https://campaignly.net) and see what it finds.
